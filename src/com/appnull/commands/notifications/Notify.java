@@ -38,10 +38,10 @@ public class Notify extends TimerTask {
 				getGroup2 = true;
 			else
 				getClassD11 = true;
-
 		}
 
 		if (getClassD11) {
+
 			EmbedBuilder eb = new EmbedBuilder();
 
 			eb.setTitle("Известие за час!");
@@ -57,6 +57,7 @@ public class Notify extends TimerTask {
 		}
 
 		if (getGroup1) {
+
 			EmbedBuilder eb = new EmbedBuilder();
 
 			eb.setTitle("Известие за час!");
@@ -72,6 +73,7 @@ public class Notify extends TimerTask {
 		}
 
 		if (getGroup2) {
+
 			EmbedBuilder eb = new EmbedBuilder();
 
 			eb.setTitle("Известие за час!");

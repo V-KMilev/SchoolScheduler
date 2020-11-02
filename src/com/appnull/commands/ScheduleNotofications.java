@@ -69,6 +69,7 @@ import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 public class ScheduleNotofications extends ListenerAdapter {
 
 	private final List<String> scheduledTasksLog = new ArrayList<String>();
+	private final List<String> accessMembers = new ArrayList<String>();
 	private final Map<Integer, List<Subject>> schoolSchedule;
 
 	private final DateTimeFormatter formatter;
@@ -85,7 +86,6 @@ public class ScheduleNotofications extends ListenerAdapter {
 		this.timer = new Timer();
 
 		// 1 is Sunday, 2 - Monday, 3 - Tuesday etc..
-
 		ArrayList<Subject> mondays = new ArrayList<Subject>();
 		ArrayList<Subject> tuesday = new ArrayList<Subject>();
 		ArrayList<Subject> thirsday = new ArrayList<Subject>();
@@ -109,7 +109,11 @@ public class ScheduleNotofications extends ListenerAdapter {
 
 		schoolSchedule.put(3, tuesday);
 		tuesday.add(new SubjectImpl(new SecondSubject(), new TeamsLocation(), new BEL()));
-		tuesday.add(new SubjectImpl(new ThirthSubject(), new TeamsLocation(), new KA()));
+		tuesday.add(new SubjectImpl(new ThirthSubject(), new TeamsLocation(), new KAPv1()));
+		tuesday.add(new SubjectImpl(new ThirthSubject(), new TeamsLocation(), new KAPv2()));
+		
+//		tuesday.add(new SubjectImpl(new SecondSubject(), new TeamsLocation(), new BEL()));
+//		tuesday.add(new SubjectImpl(new ThirthSubject(), new TeamsLocation(), new KA()));
 		tuesday.add(new SubjectImpl(new FourthSubject(), new TeamsLocation(), new KA()));
 		tuesday.add(new SubjectImpl(new FifthSubject(), new TeamsLocation(), new CS()));
 		tuesday.add(new SubjectImpl(new SixthSubject(), new TeamsLocation(), new CS()));
@@ -148,18 +152,29 @@ public class ScheduleNotofications extends ListenerAdapter {
 
 	}
 
+	private boolean getAccessMember(GuildMessageReceivedEvent event) {
+		Member currentMember = event.getMember();
+		Member accessMember;
+
+		boolean access = false;
+
+		accessMembers.add("266695705786056704");
+//		accessMembers.add("176728844034637824");
+//		accessMembers.add("318688044523716608");
+
+		for (int i = 0; i < accessMembers.size(); i++) {
+
+			accessMember = event.getGuild().getMemberById(accessMembers.get(i));
+			access = currentMember.equals(accessMember);
+		}
+
+		return access;
+	}
+
 	@Override
 	public void onGuildMessageReceived(GuildMessageReceivedEvent event) {
 
-		List<Member> accessMembers = new ArrayList<Member>();
-
 		String message = event.getMessage().getContentRaw();
-		Member currentMember = event.getMember();
-
-		Member accessMember = event.getGuild().getMemberById("266695705786056704");
-		accessMembers.add(accessMember);
-
-		boolean access = currentMember.equals(accessMembers.get(0));
 
 		if (message.contentEquals("!helpss")) {
 
@@ -176,7 +191,7 @@ public class ScheduleNotofications extends ListenerAdapter {
 			event.getChannel().sendMessage(eb.build()).queue();
 		}
 
-		if (access) {
+		if (getAccessMember(event)) {
 			if (message.contentEquals("!schedule")) {
 
 				try {
@@ -193,7 +208,8 @@ public class ScheduleNotofications extends ListenerAdapter {
 					event.getChannel().sendMessage(task).queue();
 				}
 			}
-		} else if (message.contentEquals("!schedule") || message.contentEquals("!getschedule") && !access) {
+		} else if (message.contentEquals("!schedule")
+				|| message.contentEquals("!getschedule") && !getAccessMember(event)) {
 
 			event.getChannel().sendMessage("Error! You don't have access..\n:(").queue();
 			event.getMessage().delete().queue();
@@ -232,7 +248,7 @@ public class ScheduleNotofications extends ListenerAdapter {
 					int accessToken = (int) (Math.random() * (max - min + 1) + min);
 
 					String logMessage = "CraftCN " + accessToken + "-accessToken " + // accessMember.getUser() +
-							" Scheduled task for: " + scheduledTime + " for: " + subject.getName();
+							"Scheduled task for: " + scheduledTime + " for: " + subject.getName();
 
 					System.out.println(logMessage);
 					this.scheduledTasksLog.add(logMessage);
