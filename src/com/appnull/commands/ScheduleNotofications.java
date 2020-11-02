@@ -108,12 +108,9 @@ public class ScheduleNotofications extends ListenerAdapter {
 		mondays.add(new SubjectImpl(new SeventhSubject(), new TeamsLocation(), new UPCv2()));
 
 		schoolSchedule.put(3, tuesday);
+
 		tuesday.add(new SubjectImpl(new SecondSubject(), new TeamsLocation(), new BEL()));
-		tuesday.add(new SubjectImpl(new ThirthSubject(), new TeamsLocation(), new KAPv1()));
-		tuesday.add(new SubjectImpl(new ThirthSubject(), new TeamsLocation(), new KAPv2()));
-		
-//		tuesday.add(new SubjectImpl(new SecondSubject(), new TeamsLocation(), new BEL()));
-//		tuesday.add(new SubjectImpl(new ThirthSubject(), new TeamsLocation(), new KA()));
+		tuesday.add(new SubjectImpl(new ThirthSubject(), new TeamsLocation(), new KA()));
 		tuesday.add(new SubjectImpl(new FourthSubject(), new TeamsLocation(), new KA()));
 		tuesday.add(new SubjectImpl(new FifthSubject(), new TeamsLocation(), new CS()));
 		tuesday.add(new SubjectImpl(new SixthSubject(), new TeamsLocation(), new CS()));

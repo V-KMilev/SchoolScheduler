@@ -24,7 +24,7 @@ public class Notify extends TimerTask {
 		String group1 = "<@&711826223742844931>";
 		String group2 = "<@&711826277790777424>";
 
-		String imgPNG = "https://cdn.discordapp.com/attachments/711858389067759708/771461454057701386/unknown.png";
+		String imgPNG = "https://cdn.discordapp.com/attachments/528269500269723658/772904455548305428/programa_11d.PNG";
 
 		boolean getClassD11 = false;
 		boolean getGroup1 = false;
