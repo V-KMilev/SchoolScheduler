@@ -2,6 +2,7 @@ package com.appnull.commands.notifications;
 
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 import net.dv8tion.jda.api.EmbedBuilder;
+
 import java.awt.Color;
 
 import java.util.TimerTask;
@@ -18,21 +19,72 @@ public class Notify extends TimerTask {
 
 	@Override
 	public void run() {
-		String d10 = "<@&507287205698600961>";
-		
-		EmbedBuilder eb = new EmbedBuilder();
 
-		eb.setTitle("Известие за час!");
-		eb.addField("Имате " + subject.getName() + " в " + subject.getLocation() + "!",
-				"Почвате в " + subject.getStartTime() + "..", true);
-		eb.setFooter("Изпратено на @11д");
+		String classD11 = "<@&507287205698600961>";
+		String group1 = "<@&711826223742844931>";
+		String group2 = "<@&711826277790777424>";
 
-		eb.setColor(Color.BLACK);
-		eb.setThumbnail("https://bit.ly/2X7wIEA");
+		String imgPNG = "https://cdn.discordapp.com/attachments/711858389067759708/771461454057701386/unknown.png";
 
-		event.getChannel().sendMessage(d10).queue();
-		event.getChannel().sendMessage(eb.build()).queue();
-		
+		boolean getClassD11 = false;
+		boolean getGroup1 = false;
+		boolean getGroup2 = false;
+
+		for (int i = 0; i < subject.getName().length(); i++) {
+
+			if (subject.getName().indexOf('1') != -1)
+				getGroup1 = true;
+			else if (subject.getName().indexOf('2') != -1)
+				getGroup2 = true;
+			else
+				getClassD11 = true;
+
+		}
+
+		if (getClassD11) {
+			EmbedBuilder eb = new EmbedBuilder();
+
+			eb.setTitle("Известие за час!");
+			eb.addField("Имате " + subject.getName() + " в " + subject.getLocation() + "!",
+					"Почвате в " + subject.getStartTime() + "..", true);
+			eb.setFooter("Изпратено на @11Д");
+
+			eb.setColor(Color.RED);
+			eb.setThumbnail(imgPNG);
+
+			event.getChannel().sendMessage(classD11).queue();
+			event.getChannel().sendMessage(eb.build()).queue();
+		}
+
+		if (getGroup1) {
+			EmbedBuilder eb = new EmbedBuilder();
+
+			eb.setTitle("Известие за час!");
+			eb.addField("Имате " + subject.getName() + " в " + subject.getLocation() + "!",
+					"Почвате в " + subject.getStartTime() + "..", true);
+			eb.setFooter("Изпратено на @1ва група");
+
+			eb.setColor(Color.RED);
+			eb.setThumbnail(imgPNG);
+
+			event.getChannel().sendMessage(group1).queue();
+			event.getChannel().sendMessage(eb.build()).queue();
+		}
+
+		if (getGroup2) {
+			EmbedBuilder eb = new EmbedBuilder();
+
+			eb.setTitle("Известие за час!");
+			eb.addField("Имате " + subject.getName() + " в " + subject.getLocation() + "!",
+					"Почвате в " + subject.getStartTime() + "..", true);
+			eb.setFooter("Изпратено на @2ра група");
+
+			eb.setColor(Color.RED);
+			eb.setThumbnail(imgPNG);
+
+			event.getChannel().sendMessage(group2).queue();
+			event.getChannel().sendMessage(eb.build()).queue();
+		}
 	}
 
 }

@@ -9,6 +9,6 @@ public class ThirthSubject implements SubjectTime {
 	@Override
 	public LocalTime getStartTime() {
 		
-		return LocalTime.parse("09:10");
+		return LocalTime.parse("10:30");
 	}
 }

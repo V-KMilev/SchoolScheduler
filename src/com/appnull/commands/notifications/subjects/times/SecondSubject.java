@@ -9,6 +9,6 @@ public class SecondSubject implements SubjectTime {
 	@Override
 	public LocalTime getStartTime() {
 		
-		return LocalTime.parse("08:20");
+		return LocalTime.parse("09:40");
 	}
 }

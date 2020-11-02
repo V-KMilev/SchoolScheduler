@@ -11,10 +11,9 @@ public class NullBot extends ListenerAdapter {
 	public static JDA jda;
 
 	public static void main(String[] args) throws Exception {
-		String key = "NzEwMDM4NDExNTg2Njk5MzM1.XruozQ.0KHbgXpAhkzio6m3bOzfe8eL2M8";
+		String key = "NzEwMDM4NDExNTg2Njk5MzM1.XruozQ.4MjVOouU2yGP_5u6_04ikYNO3jw";
 
-		@SuppressWarnings("deprecation")
-		JDA jda = new JDABuilder(key).build();
+		JDA jda = JDABuilder.createDefault(key).build();
 
 		jda.getPresence().setStatus(OnlineStatus.ONLINE);
 
