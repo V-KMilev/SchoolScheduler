@@ -8,6 +8,6 @@ public class FifthSubject implements SubjectTime {
 
 	@Override
 	public LocalTime getStartTime() {
-		return LocalTime.parse("12:10");
+		return LocalTime.parse("11:20");
 	}
 }
