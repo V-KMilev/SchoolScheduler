@@ -47,8 +47,8 @@ import com.appnull.commands.notifications.subjects.UPZPUv1;
 import com.appnull.commands.notifications.subjects.UPZPUv2;
 
 import com.appnull.commands.notifications.subjects.locations.TeamsLocation;
+import com.appnull.commands.notifications.subjects.locations.ClassroomLocation;
 //import com.appnull.commands.notifications.subjects.locations.ShkoloLocation;
-//import com.appnull.commands.notifications.subjects.locations.ClassroomLocation;
 //import com.appnull.commands.notifications.subjects.locations.DiscordLocation;
 
 import com.appnull.commands.notifications.subjects.times.FirstSubject;
@@ -109,7 +109,7 @@ public class ScheduleNotofications extends ListenerAdapter {
 
 		schoolSchedule.put(3, tuesday);
 
-		tuesday.add(new SubjectImpl(new SecondSubject(), new TeamsLocation(), new BEL()));
+		tuesday.add(new SubjectImpl(new SecondSubject(), new ClassroomLocation(), new BEL()));
 		tuesday.add(new SubjectImpl(new ThirthSubject(), new TeamsLocation(), new KA()));
 		tuesday.add(new SubjectImpl(new FourthSubject(), new TeamsLocation(), new KA()));
 		tuesday.add(new SubjectImpl(new FifthSubject(), new TeamsLocation(), new CS()));
@@ -140,8 +140,8 @@ public class ScheduleNotofications extends ListenerAdapter {
 		wendesday.add(new SubjectImpl(new SeventhSubject(), new TeamsLocation(), new NE()));
 
 		schoolSchedule.put(6, friday);
-		friday.add(new SubjectImpl(new FirstSubject(), new TeamsLocation(), new BEL()));
-		friday.add(new SubjectImpl(new SecondSubject(), new TeamsLocation(), new BEL()));
+		friday.add(new SubjectImpl(new FirstSubject(), new ClassroomLocation(), new BEL()));
+		friday.add(new SubjectImpl(new SecondSubject(), new ClassroomLocation(), new BEL()));
 		friday.add(new SubjectImpl(new ThirthSubject(), new TeamsLocation(), new OS()));
 		friday.add(new SubjectImpl(new FourthSubject(), new TeamsLocation(), new OS()));
 		friday.add(new SubjectImpl(new FifthSubject(), new TeamsLocation(), new ZPU()));
@@ -155,8 +155,8 @@ public class ScheduleNotofications extends ListenerAdapter {
 
 		boolean access = false;
 
-		accessMembers.add("266695705786056704");
-//		accessMembers.add("176728844034637824");
+//		accessMembers.add("266695705786056704");
+		accessMembers.add("176728844034637824");
 //		accessMembers.add("318688044523716608");
 
 		for (int i = 0; i < accessMembers.size(); i++) {
@@ -208,7 +208,8 @@ public class ScheduleNotofications extends ListenerAdapter {
 		} else if (message.contentEquals("!schedule")
 				|| message.contentEquals("!getschedule") && !getAccessMember(event)) {
 
-			event.getChannel().sendMessage("Error! You don't have access..\n:(").queue();
+			event.getChannel().sendMessage("**CraftCN Report | [ERROR]** " + event.getMember().getAsMention()
+					+ " *doesn't have access..*" + "\nUse **!helpss** for more information!").queue();
 			event.getMessage().delete().queue();
 		}
 	}
@@ -245,7 +246,8 @@ public class ScheduleNotofications extends ListenerAdapter {
 					int accessToken = (int) (Math.random() * (max - min + 1) + min);
 
 					String logMessage = "CraftCN " + accessToken + "-accessToken " + // accessMember.getUser() +
-							"Scheduled task for: " + scheduledTime + " for: " + subject.getName();
+							"Scheduled task for: " + scheduledTime + " for: " + subject.getName() + " "
+							+ subject.getPosition();
 
 					System.out.println(logMessage);
 					this.scheduledTasksLog.add(logMessage);

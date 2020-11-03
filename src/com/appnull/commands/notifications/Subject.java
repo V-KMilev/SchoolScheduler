@@ -1,4 +1,4 @@
 package com.appnull.commands.notifications;
 
-public interface Subject extends SubjectLocation, SubjectTime, SubjectName{
+public interface Subject extends SubjectLocation, SubjectTime, SubjectName {
 }

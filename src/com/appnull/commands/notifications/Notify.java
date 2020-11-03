@@ -47,6 +47,7 @@ public class Notify extends TimerTask {
 			eb.setTitle("Известие за час!");
 			eb.addField("Имате " + subject.getName() + " в " + subject.getLocation() + "!",
 					"Почвате в " + subject.getStartTime() + "..", true);
+			eb.addField("№ на час: " + subject.getPosition(), "", true);
 			eb.setFooter("Изпратено на @11Д");
 
 			eb.setColor(Color.RED);
@@ -63,6 +64,7 @@ public class Notify extends TimerTask {
 			eb.setTitle("Известие за час!");
 			eb.addField("Имате " + subject.getName() + " в " + subject.getLocation() + "!",
 					"Почвате в " + subject.getStartTime() + "..", true);
+			eb.addField("№ на час: " + subject.getPosition(), "", true);
 			eb.setFooter("Изпратено на @1ва група");
 
 			eb.setColor(Color.RED);
@@ -79,6 +81,7 @@ public class Notify extends TimerTask {
 			eb.setTitle("Известие за час!");
 			eb.addField("Имате " + subject.getName() + " в " + subject.getLocation() + "!",
 					"Почвате в " + subject.getStartTime() + "..", true);
+			eb.addField("№ на час: " + subject.getPosition(), "", true);
 			eb.setFooter("Изпратено на @2ра група");
 
 			eb.setColor(Color.RED);

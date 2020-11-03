@@ -10,4 +10,9 @@ public class NinthSubject implements SubjectTime {
 	public LocalTime getStartTime() {
 		return LocalTime.parse("14:40");
 	}
+
+	@Override
+	public String getPosition() {
+		return "9";
+	}
 }
