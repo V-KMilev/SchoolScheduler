@@ -8,12 +8,14 @@ public class SubjectImpl implements Subject {
 	private SubjectLocation subjectLocation;
 	private SubjectName subjectName;
 	private SubjectTime subjectPosition;
+	private SubjectTime subjectEndTime;
 
 	public SubjectImpl(SubjectTime time, SubjectLocation location, SubjectName name) {
 		this.subjectName = name;
 		this.subjectLocation = location;
 		this.subjectTime = time;
 		this.subjectPosition = time;
+		this.subjectEndTime = time;
 	}
 
 	@Override
@@ -24,6 +26,11 @@ public class SubjectImpl implements Subject {
 	@Override
 	public String getPosition() {
 		return subjectPosition.getPosition();
+	}
+
+	@Override
+	public String getEndTime() {
+		return subjectEndTime.getEndTime();
 	}
 
 	@Override

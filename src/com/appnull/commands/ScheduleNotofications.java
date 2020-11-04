@@ -50,7 +50,7 @@ import com.appnull.commands.notifications.subjects.locations.TeamsLocation;
 import com.appnull.commands.notifications.subjects.locations.ClassroomLocation;
 //import com.appnull.commands.notifications.subjects.locations.ShkoloLocation;
 //import com.appnull.commands.notifications.subjects.locations.DiscordLocation;
-
+import com.appnull.commands.notifications.subjects.locations.NoLocation;
 import com.appnull.commands.notifications.subjects.times.FirstSubject;
 import com.appnull.commands.notifications.subjects.times.SecondSubject;
 import com.appnull.commands.notifications.subjects.times.ThirthSubject;
@@ -119,8 +119,8 @@ public class ScheduleNotofications extends ListenerAdapter {
 
 		schoolSchedule.put(4, thirsday);
 		thirsday.add(new SubjectImpl(new SecondSubject(), new TeamsLocation(), new ChKR()));
-		thirsday.add(new SubjectImpl(new ThirthSubject(), new TeamsLocation(), new FVS()));
-		thirsday.add(new SubjectImpl(new FourthSubject(), new TeamsLocation(), new FVS()));
+		thirsday.add(new SubjectImpl(new ThirthSubject(), new NoLocation(), new FVS()));
+		thirsday.add(new SubjectImpl(new FourthSubject(), new NoLocation(), new FVS()));
 		thirsday.add(new SubjectImpl(new FifthSubject(), new TeamsLocation(), new UPZPUv1()));
 		thirsday.add(new SubjectImpl(new FifthSubject(), new TeamsLocation(), new UPZPUv2()));
 		thirsday.add(new SubjectImpl(new SixthSubject(), new TeamsLocation(), new UPZPUv1()));
@@ -155,8 +155,8 @@ public class ScheduleNotofications extends ListenerAdapter {
 
 		boolean access = false;
 
-//		accessMembers.add("266695705786056704");
-		accessMembers.add("176728844034637824");
+		accessMembers.add("266695705786056704");
+//		accessMembers.add("176728844034637824");
 //		accessMembers.add("318688044523716608");
 
 		for (int i = 0; i < accessMembers.size(); i++) {
@@ -200,7 +200,8 @@ public class ScheduleNotofications extends ListenerAdapter {
 
 			if (message.contentEquals("!getschedule")) {
 
-				event.getChannel().sendMessage("CraftCN End-Date: " + endDate).queue();
+				event.getChannel().sendMessage("**CraftCN End-Date: " + endDate + "** ||**Scheduler: "
+						+ event.getMember().getAsMention() + "**||").queue();
 				for (String task : scheduledTasksLog) {
 					event.getChannel().sendMessage(task).queue();
 				}
@@ -208,14 +209,16 @@ public class ScheduleNotofications extends ListenerAdapter {
 		} else if (message.contentEquals("!schedule")
 				|| message.contentEquals("!getschedule") && !getAccessMember(event)) {
 
-			event.getChannel().sendMessage("**CraftCN Report | [ERROR]** " + event.getMember().getAsMention()
-					+ " *doesn't have access..*" + "\nUse **!helpss** for more information!").queue();
+			event.getChannel()
+					.sendMessage("**CraftCN Report- " + event.getMember().getAsMention()
+							+ "** *doesn't have access..* **[ERROR]**" + "\nUse **!helpss** for more information!")
+					.queue();
 			event.getMessage().delete().queue();
 		}
 	}
 
 	private void scheduleTasks(GuildMessageReceivedEvent event) throws ParseException, IOException {
-		System.out.println("CraftCN End-Date: " + endDate);
+		System.out.println("CraftCN End-Date: " + endDate + " Scheduler: " + event.getMember().getUser());
 
 		SimpleDateFormat dateFormater = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 		LocalDate startDate = LocalDate.now();
@@ -245,12 +248,17 @@ public class ScheduleNotofications extends ListenerAdapter {
 					int min = 900000000;
 					int accessToken = (int) (Math.random() * (max - min + 1) + min);
 
-					String logMessage = "CraftCN " + accessToken + "-accessToken " + // accessMember.getUser() +
-							"Scheduled task for: " + scheduledTime + " for: " + subject.getName() + " "
-							+ subject.getPosition();
+					String logMessageSOUT = "CraftCN " + accessToken + "-accessToken " + // accessMember.getUser() +
+							"Scheduled task for: " + scheduledTime + " Subject: " + subject.getName() + " ["
+							+ subject.getPosition() + "]";
 
-					System.out.println(logMessage);
-					this.scheduledTasksLog.add(logMessage);
+					String logMessageJDA = "**CraftCN** ||" + accessToken + "-accessToken|| " + // accessMember.getUser()
+																								// +
+							"**Scheduled task for:** `" + scheduledTime + "` **Subject:** `" + subject.getName()
+							+ "` **[" + subject.getPosition() + "]**";
+
+					System.out.println(logMessageSOUT);
+					this.scheduledTasksLog.add(logMessageJDA);
 
 					timer.schedule(new Notify(event, subject), scheduledTime);
 

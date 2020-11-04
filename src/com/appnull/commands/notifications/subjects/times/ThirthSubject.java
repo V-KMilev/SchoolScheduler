@@ -12,6 +12,11 @@ public class ThirthSubject implements SubjectTime {
 	}
 
 	@Override
+	public String getEndTime() {
+		return "10:20";
+	}
+
+	@Override
 	public String getPosition() {
 		return "3";
 	}

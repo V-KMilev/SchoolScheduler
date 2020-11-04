@@ -12,6 +12,11 @@ public class SeventhSubject implements SubjectTime {
 	}
 
 	@Override
+	public String getEndTime() {
+		return "13:40";
+	}
+
+	@Override
 	public String getPosition() {
 		return "7";
 	}

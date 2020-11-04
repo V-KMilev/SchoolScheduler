@@ -13,6 +13,11 @@ public class SecondSubject implements SubjectTime {
 	}
 
 	@Override
+	public String getEndTime() {
+		return "09:30";
+	}
+
+	@Override
 	public String getPosition() {
 		return "2";
 	}
