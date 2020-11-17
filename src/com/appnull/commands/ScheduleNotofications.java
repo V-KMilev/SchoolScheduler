@@ -50,6 +50,7 @@ import com.appnull.commands.notifications.subjects.locations.TeamsLocation;
 import com.appnull.commands.notifications.subjects.locations.ClassroomLocation;
 //import com.appnull.commands.notifications.subjects.locations.ShkoloLocation;
 //import com.appnull.commands.notifications.subjects.locations.DiscordLocation;
+
 import com.appnull.commands.notifications.subjects.locations.NoLocation;
 import com.appnull.commands.notifications.subjects.times.FirstSubject;
 import com.appnull.commands.notifications.subjects.times.SecondSubject;
@@ -80,7 +81,7 @@ public class ScheduleNotofications extends ListenerAdapter {
 	public ScheduleNotofications() throws ParseException {
 
 		this.formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
-		this.endDate = LocalDate.parse("13/11/2020 23:59:59", formatter);
+		this.endDate = LocalDate.parse("28/11/2020 23:59:59", formatter);
 		this.schoolSchedule = new HashedMap<Integer, List<Subject>>();
 		this.calendar = Calendar.getInstance();
 		this.timer = new Timer();
@@ -93,7 +94,7 @@ public class ScheduleNotofications extends ListenerAdapter {
 		ArrayList<Subject> friday = new ArrayList<Subject>();
 
 		schoolSchedule.put(2, mondays);
-		mondays.add(new SubjectImpl(new FirstSubject(), new TeamsLocation(), new SD()));
+		mondays.add(new SubjectImpl(new FirstSubject(), new NoLocation(), new SD()));
 		mondays.add(new SubjectImpl(new SecondSubject(), new TeamsLocation(), new KAPv1()));
 		mondays.add(new SubjectImpl(new SecondSubject(), new TeamsLocation(), new KAPv2()));
 		mondays.add(new SubjectImpl(new ThirthSubject(), new TeamsLocation(), new KAPv1()));
@@ -159,10 +160,11 @@ public class ScheduleNotofications extends ListenerAdapter {
 //		accessMembers.add("176728844034637824");
 //		accessMembers.add("318688044523716608");
 
+		accessMember = event.getGuild().getMemberById(accessMembers.get(0));
+		access = currentMember.equals(accessMember);
+
 		for (int i = 0; i < accessMembers.size(); i++) {
 
-			accessMember = event.getGuild().getMemberById(accessMembers.get(i));
-			access = currentMember.equals(accessMember);
 		}
 
 		return access;
@@ -210,8 +212,8 @@ public class ScheduleNotofications extends ListenerAdapter {
 				|| message.contentEquals("!getschedule") && !getAccessMember(event)) {
 
 			event.getChannel()
-					.sendMessage("**CraftCN Report- " + event.getMember().getAsMention()
-							+ "** *doesn't have access..* **[ERROR]**" + "\nUse **!helpss** for more information!")
+					.sendMessage("**CraftCN Report | " + event.getMember().getAsMention()
+							+ "** doesn't have access.. **[ERROR]**" + "\nUse **!helpss** for more information!")
 					.queue();
 			event.getMessage().delete().queue();
 		}
@@ -248,14 +250,24 @@ public class ScheduleNotofications extends ListenerAdapter {
 					int min = 900000000;
 					int accessToken = (int) (Math.random() * (max - min + 1) + min);
 
+					String loc = "";
+
+					if (subject.getLocation() == "Teams") {
+						loc = subject.getLocation();
+					} else if (subject.getLocation() == "Classroom") {
+						loc = subject.getLocation();
+					} else {
+						loc = "NULL";
+					}
+
 					String logMessageSOUT = "CraftCN " + accessToken + "-accessToken " + // accessMember.getUser() +
 							"Scheduled task for: " + scheduledTime + " Subject: " + subject.getName() + " ["
-							+ subject.getPosition() + "]";
+							+ subject.getPosition() + "] - " + loc + " " + subject.getCode();
 
 					String logMessageJDA = "**CraftCN** ||" + accessToken + "-accessToken|| " + // accessMember.getUser()
 																								// +
 							"**Scheduled task for:** `" + scheduledTime + "` **Subject:** `" + subject.getName()
-							+ "` **[" + subject.getPosition() + "]**";
+							+ "` **[" + subject.getPosition() + "] | " + loc + " ||"+ subject.getCode() +"||**";
 
 					System.out.println(logMessageSOUT);
 					this.scheduledTasksLog.add(logMessageJDA);

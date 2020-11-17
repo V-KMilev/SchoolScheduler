@@ -6,7 +6,7 @@ public class NoLocation implements SubjectLocation {
 
 	@Override
 	public String getLocation() {
-		return "[Все още няма местоположение]";
+		return "[NULL]";
 	}
 
 }

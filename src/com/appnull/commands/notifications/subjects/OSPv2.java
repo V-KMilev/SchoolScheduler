@@ -8,4 +8,9 @@ public class OSPv2 implements SubjectName {
 	public String getName() {
 		return "Операционни системи (ОС) ПРАКТИКА, гр.2";
 	}
+
+	@Override
+	public String getCode() {
+		return "8oumx66";
+	}
 }

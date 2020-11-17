@@ -8,4 +8,9 @@ public class CS implements SubjectName {
 	public String getName() {
 		return "Цифрова схемотехника (ЦС)";
 	}
+
+	@Override
+	public String getCode() {
+		return "ew6szka";
+	}
 }

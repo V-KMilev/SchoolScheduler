@@ -8,4 +8,9 @@ public class BEL implements SubjectName {
 	public String getName() {
 		return "Български език и литература (БЕЛ)";
 	}
+
+	@Override
+	public String getCode() {
+		return "b2x1o8k";
+	}
 }

@@ -8,4 +8,9 @@ public class NE implements SubjectName {
 	public String getName() {
 		return "Немски език (НЕ)";
 	}
+
+	@Override
+	public String getCode() {
+		return "r3g6lg3";
+	}
 }

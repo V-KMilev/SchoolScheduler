@@ -8,4 +8,9 @@ public class UPCv2 implements SubjectName {
 	public String getName() {
 		return "Учебна практика цифрова схемотехника (УП-схем.) ПРАКТИКА, гр.2";
 	}
+
+	@Override
+	public String getCode() {
+		return "1znwjk1";
+	}
 }

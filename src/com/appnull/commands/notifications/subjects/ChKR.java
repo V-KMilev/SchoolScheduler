@@ -8,4 +8,9 @@ public class ChKR implements SubjectName {
 	public String getName() {
 		return "Час на класния ръководител (ЧКР)";
 	}
+
+	@Override
+	public String getCode() {
+		return "vva8xiv";
+	}
 }

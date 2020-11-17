@@ -8,4 +8,9 @@ public class FVS implements SubjectName {
 	public String getName() {
 		return "Физическо възпитание и спорт (ФВС)";
 	}
+
+	@Override
+	public String getCode() {
+		return "mcsehdp";
+	}
 }

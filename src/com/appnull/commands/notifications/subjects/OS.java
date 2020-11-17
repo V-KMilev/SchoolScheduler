@@ -8,4 +8,9 @@ public class OS implements SubjectName {
 	public String getName() {
 		return "Операционни системи (ОС)";
 	}
+
+	@Override
+	public String getCode() {
+		return "6sgsil2";
+	}
 }

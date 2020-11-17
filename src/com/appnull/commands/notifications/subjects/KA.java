@@ -8,4 +8,9 @@ public class KA implements SubjectName {
 	public String getName() {
 		return "Компютърна архитектура (КА)";
 	}
+
+	@Override
+	public String getCode() {
+		return "hzxzzjo";
+	}
 }

@@ -8,4 +8,9 @@ public class KM implements SubjectName {
 	public String getName() {
 		return "Компютърни мрежи (КМ)";
 	}
+
+	@Override
+	public String getCode() {
+		return "gyix9kd";
+	}
 }

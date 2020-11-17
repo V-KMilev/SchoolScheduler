@@ -8,4 +8,9 @@ public class KAPv2 implements SubjectName {
 	public String getName() {
 		return "Компютърна архитектура (КА) ПРАКТИКА, гр.2";
 	}
+
+	@Override
+	public String getCode() {
+		return "3341wao";
+	}
 }

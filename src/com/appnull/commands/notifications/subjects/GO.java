@@ -8,4 +8,9 @@ public class GO implements SubjectName {
 	public String getName() {
 		return "Гражданско образование (ГО)";
 	}
+
+	@Override
+	public String getCode() {
+		return "pkiaoay";
+	}
 }

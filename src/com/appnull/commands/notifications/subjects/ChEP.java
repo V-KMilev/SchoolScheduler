@@ -8,4 +8,9 @@ public class ChEP implements SubjectName {
 	public String getName() {
 		return "Чужд език по професия (ЧЕП)";
 	}
+
+	@Override
+	public String getCode() {
+		return "vva8xiv";
+	}
 }

@@ -8,4 +8,9 @@ public class SD implements SubjectName {
 	public String getName() {
 		return "Спортни дейности (СД) | (ФВС)";
 	}
+
+	@Override
+	public String getCode() {
+		return "mcsehdp";
+	}
 }

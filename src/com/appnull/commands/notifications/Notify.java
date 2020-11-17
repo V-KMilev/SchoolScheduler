@@ -45,9 +45,9 @@ public class Notify extends TimerTask {
 			EmbedBuilder eb = new EmbedBuilder();
 
 			eb.setTitle("Известие за час!");
-			eb.addField("Имате " + subject.getName() + " в " + subject.getLocation() + "!",
-					"Почвате в " + subject.getStartTime() + "\nСвършвате в " + subject.getEndTime() + "", true);
-			eb.addField("", "№ на час: " + subject.getPosition(), true);
+			eb.addField("Имате " + subject.getName() + "\nв " + subject.getLocation() + "!",
+					"Start: " + subject.getStartTime() + "\nEnd: " + subject.getEndTime(), true);
+			eb.addField("", "№ на час: " + subject.getPosition() + "\nCode: " + subject.getCode(), true);
 			eb.setFooter("Изпратено на @11Д");
 
 			eb.setColor(Color.RED);
@@ -62,9 +62,9 @@ public class Notify extends TimerTask {
 			EmbedBuilder eb = new EmbedBuilder();
 
 			eb.setTitle("Известие за час!");
-			eb.addField("Имате " + subject.getName() + " в " + subject.getLocation() + "!",
-					"Почвате в " + subject.getStartTime() + "\nСвършвате в " + subject.getEndTime() + "", true);
-			eb.addField("", "№ на час: " + subject.getPosition(), true);
+			eb.addField("Имате " + subject.getName() + "\nв " + subject.getLocation() + "!",
+					"Start: " + subject.getStartTime() + "\nEnd: " + subject.getEndTime(), true);
+			eb.addField("", "№ на час: " + subject.getPosition() + "\nCode: " + subject.getCode(), true);
 			eb.setFooter("Изпратено на @1ва група");
 
 			eb.setColor(Color.RED);
@@ -79,9 +79,9 @@ public class Notify extends TimerTask {
 			EmbedBuilder eb = new EmbedBuilder();
 
 			eb.setTitle("Известие за час!");
-			eb.addField("Имате " + subject.getName() + " в " + subject.getLocation() + "!",
-					"Почвате в " + subject.getStartTime() + "\nСвършвате в " + subject.getEndTime() + "", true);
-			eb.addField("", "№ на час: " + subject.getPosition(), true);
+			eb.addField("Имате " + subject.getName() + "\nв " + subject.getLocation() + "!",
+					"Start: " + subject.getStartTime() + "\nEnd: " + subject.getEndTime(), true);
+			eb.addField("", "№ на час: " + subject.getPosition() + "\nCode: " + subject.getCode(), true);
 			eb.setFooter("Изпратено на @2ра група");
 
 			eb.setColor(Color.RED);

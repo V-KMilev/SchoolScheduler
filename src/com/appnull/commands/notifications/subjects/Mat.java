@@ -8,4 +8,9 @@ public class Mat implements SubjectName {
 	public String getName() {
 		return "Математика";
 	}
+
+	@Override
+	public String getCode() {
+		return "fcs8b64";
+	}
 }

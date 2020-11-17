@@ -8,4 +8,9 @@ public class ZPU implements SubjectName {
 	public String getName() {
 		return "Запаметяващи и периферни устройства (ЗПУ)";
 	}
+
+	@Override
+	public String getCode() {
+		return "3m9tmd5";
+	}
 }
