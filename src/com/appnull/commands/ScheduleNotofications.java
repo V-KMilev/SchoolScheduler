@@ -151,6 +151,7 @@ public class ScheduleNotofications extends ListenerAdapter {
 	}
 
 	private boolean getAccessMember(GuildMessageReceivedEvent event) {
+		Member owner = event.getGuild().getMemberById("266695705786056704");
 		Member currentMember = event.getMember();
 		Member accessMember;
 
@@ -161,10 +162,9 @@ public class ScheduleNotofications extends ListenerAdapter {
 		accessMembers.add("318688044523716608");
 
 		accessMember = event.getGuild().getMemberById(accessMembers.get(0));
-		access = currentMember.equals(accessMember);
 
-		for (int i = 0; i < accessMembers.size(); i++) {
-
+		if (currentMember.equals(owner) || currentMember.equals(accessMember)) {
+			access = true;
 		}
 
 		return access;
