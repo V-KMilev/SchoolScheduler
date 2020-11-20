@@ -136,9 +136,9 @@ public class ScheduleNotofications extends ListenerAdapter {
 		wendesday.add(new SubjectImpl(new SecondSubject(), new TeamsLocation(), new KM()));
 		wendesday.add(new SubjectImpl(new ThirthSubject(), new TeamsLocation(), new Mat()));
 		wendesday.add(new SubjectImpl(new FourthSubject(), new TeamsLocation(), new Mat()));
-		wendesday.add(new SubjectImpl(new FifthSubject(), new TeamsLocation(), new GO()));
 		wendesday.add(new SubjectImpl(new SixthSubject(), new TeamsLocation(), new NE()));
 		wendesday.add(new SubjectImpl(new SeventhSubject(), new TeamsLocation(), new NE()));
+		wendesday.add(new SubjectImpl(new EighthSubject(), new TeamsLocation(), new GO()));
 
 		schoolSchedule.put(6, friday);
 		friday.add(new SubjectImpl(new FirstSubject(), new ClassroomLocation(), new BEL()));
@@ -156,9 +156,9 @@ public class ScheduleNotofications extends ListenerAdapter {
 
 		boolean access = false;
 
-		accessMembers.add("266695705786056704");
+//		accessMembers.add("266695705786056704");
 //		accessMembers.add("176728844034637824");
-//		accessMembers.add("318688044523716608");
+		accessMembers.add("318688044523716608");
 
 		accessMember = event.getGuild().getMemberById(accessMembers.get(0));
 		access = currentMember.equals(accessMember);
@@ -267,7 +267,7 @@ public class ScheduleNotofications extends ListenerAdapter {
 					String logMessageJDA = "**CraftCN** ||" + accessToken + "-accessToken|| " + // accessMember.getUser()
 																								// +
 							"**Scheduled task for:** `" + scheduledTime + "` **Subject:** `" + subject.getName()
-							+ "` **[" + subject.getPosition() + "] | " + loc + " ||"+ subject.getCode() +"||**";
+							+ "` **[" + subject.getPosition() + "] | `" + loc + "` ||" + subject.getCode() + "||**";
 
 					System.out.println(logMessageSOUT);
 					this.scheduledTasksLog.add(logMessageJDA);
