@@ -1,4 +1,4 @@
-package com.appnull.commands.notifications;
+package com.appnull.commands.notifications.base;
 
 public interface SubjectLocation {
 

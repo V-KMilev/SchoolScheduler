@@ -1,4 +1,4 @@
-package com.appnull.commands.notifications;
+package com.appnull.commands.notifications.base;
 
 import java.time.LocalTime;
 
@@ -11,6 +11,7 @@ public class SubjectImpl implements Subject {
 	private SubjectName subjectCode;
 	private SubjectTime subjectPosition;
 	private SubjectTime subjectEndTime;
+	private SubjectTime subjectNextTime;
 
 	public SubjectImpl(SubjectTime time, SubjectLocation location, SubjectName name) {
 		this.subjectName = name;
@@ -20,6 +21,7 @@ public class SubjectImpl implements Subject {
 		this.subjectCode = name;
 		this.subjectPosition = time;
 		this.subjectEndTime = time;
+		this.subjectNextTime = time;
 	}
 
 	@Override
@@ -52,4 +54,8 @@ public class SubjectImpl implements Subject {
 		return subjectCode.getCode();
 	}
 
+	@Override
+	public String getNextTime() {
+		return subjectNextTime.getNextTime();
+	}
 }

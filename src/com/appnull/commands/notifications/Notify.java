@@ -7,6 +7,8 @@ import java.awt.Color;
 
 import java.util.TimerTask;
 
+import com.appnull.commands.notifications.base.Subject;
+
 public class Notify extends TimerTask {
 
 	private GuildMessageReceivedEvent event;
@@ -46,8 +48,11 @@ public class Notify extends TimerTask {
 
 			eb.setTitle("Известие за час!");
 			eb.addField("Имате " + subject.getName() + "\nв " + subject.getLocation() + "!",
-					"Start: " + subject.getStartTime() + "\nEnd: " + subject.getEndTime(), true);
-			eb.addField("", "№ на час: " + subject.getPosition() + "\nCode: " + subject.getCode(), true);
+					"Start: " + subject.getStartTime() + "\nEnd: " + subject.getEndTime() + "\n**Следващ час: "
+							+ subject.getNextTime() + "**",
+					true);
+			eb.addField("", "№ на час: " + subject.getPosition() + "\nCode: ||" + subject.getCode() + "||", true);
+
 			eb.setFooter("Изпратено на @11Д");
 
 			eb.setColor(Color.RED);
@@ -63,8 +68,11 @@ public class Notify extends TimerTask {
 
 			eb.setTitle("Известие за час!");
 			eb.addField("Имате " + subject.getName() + "\nв " + subject.getLocation() + "!",
-					"Start: " + subject.getStartTime() + "\nEnd: " + subject.getEndTime(), true);
-			eb.addField("", "№ на час: " + subject.getPosition() + "\nCode: " + subject.getCode(), true);
+					"Start: " + subject.getStartTime() + "\nEnd: " + subject.getEndTime() + "\n**Следващ час: "
+							+ subject.getNextTime() + "**",
+					true);
+			eb.addField("", "№ на час: " + subject.getPosition() + "\nCode: ||" + subject.getCode() + "||", true);
+
 			eb.setFooter("Изпратено на @1ва група");
 
 			eb.setColor(Color.RED);
@@ -80,8 +88,11 @@ public class Notify extends TimerTask {
 
 			eb.setTitle("Известие за час!");
 			eb.addField("Имате " + subject.getName() + "\nв " + subject.getLocation() + "!",
-					"Start: " + subject.getStartTime() + "\nEnd: " + subject.getEndTime(), true);
-			eb.addField("", "№ на час: " + subject.getPosition() + "\nCode: " + subject.getCode(), true);
+					"Start: " + subject.getStartTime() + "\nEnd: " + subject.getEndTime() + "\n**Следващ час: "
+							+ subject.getNextTime() + "**",
+					true);
+			eb.addField("", "№ на час: " + subject.getPosition() + "\nCode: ||" + subject.getCode() + "||", true);
+
 			eb.setFooter("Изпратено на @2ра група");
 
 			eb.setColor(Color.RED);

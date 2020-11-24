@@ -2,7 +2,7 @@ package com.appnull.commands.notifications.subjects.times;
 
 import java.time.LocalTime;
 
-import com.appnull.commands.notifications.SubjectTime;
+import com.appnull.commands.notifications.base.SubjectTime;
 
 public class SixthSubject implements SubjectTime {
 
@@ -14,6 +14,11 @@ public class SixthSubject implements SubjectTime {
 	@Override
 	public String getEndTime() {
 		return "12:50";
+	}
+
+	@Override
+	public String getNextTime() {
+		return "13:00";
 	}
 
 	@Override

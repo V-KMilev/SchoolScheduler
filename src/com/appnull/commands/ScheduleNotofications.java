@@ -21,9 +21,8 @@ import java.time.format.DateTimeFormatter;
 import org.apache.commons.collections4.map.HashedMap;
 
 import com.appnull.commands.notifications.Notify;
-import com.appnull.commands.notifications.Subject;
-import com.appnull.commands.notifications.SubjectImpl;
-
+import com.appnull.commands.notifications.base.Subject;
+import com.appnull.commands.notifications.base.SubjectImpl;
 import com.appnull.commands.notifications.subjects.CS;
 import com.appnull.commands.notifications.subjects.GO;
 import com.appnull.commands.notifications.subjects.KA;
@@ -180,8 +179,9 @@ public class ScheduleNotofications extends ListenerAdapter {
 			EmbedBuilder eb = new EmbedBuilder();
 
 			eb.setTitle("QSG - HELP");
-			eb.addField("- !schedule", "Създаване на програма.", true);
-			eb.addField("- !getschedule", "Принтиране на програмата.", true);
+			eb.addField("- !schedule", "Създаване на програмa;", true);
+			eb.addField("- !getschedule", "Принтиране на програма;", true);
+			eb.addField("- !getprogram", "Програма;", true);
 			eb.setFooter("For more help CurrentlyNull#3126 or vilimir.k.milev@gmail.com");
 
 			eb.setColor(Color.RED);
@@ -195,7 +195,8 @@ public class ScheduleNotofications extends ListenerAdapter {
 
 				try {
 					scheduleTasks(event);
-				} catch (ParseException | IOException e) {
+
+				} catch (IOException | ParseException e) {
 					event.getChannel().sendMessage("Error!").queue();
 				}
 			}
@@ -208,6 +209,7 @@ public class ScheduleNotofications extends ListenerAdapter {
 					event.getChannel().sendMessage(task).queue();
 				}
 			}
+
 		} else if (message.contentEquals("!schedule")
 				|| message.contentEquals("!getschedule") && !getAccessMember(event)) {
 

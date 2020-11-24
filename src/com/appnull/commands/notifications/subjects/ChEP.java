@@ -1,6 +1,6 @@
 package com.appnull.commands.notifications.subjects;
 
-import com.appnull.commands.notifications.SubjectName;
+import com.appnull.commands.notifications.base.SubjectName;
 
 public class ChEP implements SubjectName {
 
