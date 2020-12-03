@@ -80,7 +80,7 @@ public class ScheduleNotofications extends ListenerAdapter {
 	public ScheduleNotofications() throws ParseException {
 
 		this.formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
-		this.endDate = LocalDate.parse("28/11/2020 23:59:59", formatter);
+		this.endDate = LocalDate.parse("01/01/2021 23:59:59", formatter);
 		this.schoolSchedule = new HashedMap<Integer, List<Subject>>();
 		this.calendar = Calendar.getInstance();
 		this.timer = new Timer();
@@ -108,7 +108,6 @@ public class ScheduleNotofications extends ListenerAdapter {
 		mondays.add(new SubjectImpl(new SeventhSubject(), new TeamsLocation(), new UPCv2()));
 
 		schoolSchedule.put(3, tuesday);
-
 		tuesday.add(new SubjectImpl(new SecondSubject(), new ClassroomLocation(), new BEL()));
 		tuesday.add(new SubjectImpl(new ThirthSubject(), new TeamsLocation(), new KA()));
 		tuesday.add(new SubjectImpl(new FourthSubject(), new TeamsLocation(), new KA()));
@@ -178,10 +177,10 @@ public class ScheduleNotofications extends ListenerAdapter {
 
 			EmbedBuilder eb = new EmbedBuilder();
 
-			eb.setTitle("QSG - HELP");
-			eb.addField("- !schedule", "Създаване на програмa;", true);
-			eb.addField("- !getschedule", "Принтиране на програма;", true);
-			eb.addField("- !getprogram", "Програма;", true);
+			eb.setTitle("CraftCN - HELP");
+			eb.addField("> !schedule", "Създаване на програмa", true);
+			eb.addField("> !getschedule", "Принтиране на програма", true);
+			eb.addField("> !getprogram", "Програма", true);
 			eb.setFooter("For more help CurrentlyNull#3126 or vilimir.k.milev@gmail.com");
 
 			eb.setColor(Color.RED);

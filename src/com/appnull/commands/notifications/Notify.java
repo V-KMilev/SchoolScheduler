@@ -47,7 +47,7 @@ public class Notify extends TimerTask {
 			EmbedBuilder eb = new EmbedBuilder();
 
 			eb.setTitle("Известие за час!");
-			eb.addField("Имате " + subject.getName() + "\nв " + subject.getLocation() + "!",
+			eb.addField("Subject: " + subject.getName() + "\n Location: " + subject.getLocation(),
 					"Start: " + subject.getStartTime() + "\nEnd: " + subject.getEndTime() + "\n**Следващ час: "
 							+ subject.getNextTime() + "**",
 					true);
@@ -67,7 +67,7 @@ public class Notify extends TimerTask {
 			EmbedBuilder eb = new EmbedBuilder();
 
 			eb.setTitle("Известие за час!");
-			eb.addField("Имате " + subject.getName() + "\nв " + subject.getLocation() + "!",
+			eb.addField("Subject: " + subject.getName() + "\n Location: " + subject.getLocation(),
 					"Start: " + subject.getStartTime() + "\nEnd: " + subject.getEndTime() + "\n**Следващ час: "
 							+ subject.getNextTime() + "**",
 					true);
@@ -87,7 +87,7 @@ public class Notify extends TimerTask {
 			EmbedBuilder eb = new EmbedBuilder();
 
 			eb.setTitle("Известие за час!");
-			eb.addField("Имате " + subject.getName() + "\nв " + subject.getLocation() + "!",
+			eb.addField("Subject: " + subject.getName() + "\n Location: " + subject.getLocation(),
 					"Start: " + subject.getStartTime() + "\nEnd: " + subject.getEndTime() + "\n**Следващ час: "
 							+ subject.getNextTime() + "**",
 					true);
