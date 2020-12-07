@@ -46,14 +46,15 @@ public class Notify extends TimerTask {
 
 			EmbedBuilder eb = new EmbedBuilder();
 
-			eb.setTitle("Известие за час!");
-			eb.addField("Subject: " + subject.getName() + "\n Location: " + subject.getLocation(),
-					"Start: " + subject.getStartTime() + "\nEnd: " + subject.getEndTime() + "\n**Следващ час: "
-							+ subject.getNextTime() + "**",
-					true);
-			eb.addField("", "№ на час: " + subject.getPosition() + "\nCode: ||" + subject.getCode() + "||", true);
+			eb.setTitle("РР·РІРµСЃС‚РёРµ Р·Р° С‡Р°СЃ!");
+			eb.addField("РџСЂРµРґРјРµС‚: " + subject.getName(),
+					"`в„– РЅР° С‡Р°СЃ:` **" + subject.getPosition() + "**\n**`РљРѕРґ:`** ||**" + subject.getCode() + "**||", true);
 
-			eb.setFooter("Изпратено на @11Д");
+			eb.addField("РњРµСЃС‚РѕРїРѕР»РѕР¶РµРЅРёРµ: " + subject.getLocation(), "`РќР°С‡Р°Р»Рѕ:` **" + subject.getStartTime()
+					+ "**\n`РљСЂР°Р№:` **" + subject.getEndTime() + "**\n`РЎР»РµРґРІР°С‰ С‡Р°СЃ:` **" + subject.getNextTime() + "**",
+					true);
+
+			eb.setFooter("РР·РїСЂР°С‚РµРЅРѕ РЅР° @11Р”");
 
 			eb.setColor(Color.RED);
 			eb.setThumbnail(imgPNG);
@@ -66,14 +67,15 @@ public class Notify extends TimerTask {
 
 			EmbedBuilder eb = new EmbedBuilder();
 
-			eb.setTitle("Известие за час!");
-			eb.addField("Subject: " + subject.getName() + "\n Location: " + subject.getLocation(),
-					"Start: " + subject.getStartTime() + "\nEnd: " + subject.getEndTime() + "\n**Следващ час: "
-							+ subject.getNextTime() + "**",
-					true);
-			eb.addField("", "№ на час: " + subject.getPosition() + "\nCode: ||" + subject.getCode() + "||", true);
+			eb.setTitle("РР·РІРµСЃС‚РёРµ Р·Р° С‡Р°СЃ!");
+			eb.addField("РџСЂРµРґРјРµС‚: " + subject.getName(),
+					"в„– РЅР° С‡Р°СЃ: " + subject.getPosition() + "\nРљРѕРґ: ||" + subject.getCode() + "||", true);
 
-			eb.setFooter("Изпратено на @1ва група");
+			eb.addField("РњРµСЃС‚РѕРїРѕР»РѕР¶РµРЅРёРµ: " + subject.getLocation(), "`РќР°С‡Р°Р»Рѕ:` **" + subject.getStartTime()
+					+ "**\n`РљСЂР°Р№:` **" + subject.getEndTime() + "**\n`РЎР»РµРґРІР°С‰ С‡Р°СЃ:` **" + subject.getNextTime() + "**",
+					true);
+
+			eb.setFooter("РР·РїСЂР°С‚РµРЅРѕ РЅР° @1РІР° РіСЂСѓРїР°");
 
 			eb.setColor(Color.RED);
 			eb.setThumbnail(imgPNG);
@@ -86,14 +88,15 @@ public class Notify extends TimerTask {
 
 			EmbedBuilder eb = new EmbedBuilder();
 
-			eb.setTitle("Известие за час!");
-			eb.addField("Subject: " + subject.getName() + "\n Location: " + subject.getLocation(),
-					"Start: " + subject.getStartTime() + "\nEnd: " + subject.getEndTime() + "\n**Следващ час: "
-							+ subject.getNextTime() + "**",
-					true);
-			eb.addField("", "№ на час: " + subject.getPosition() + "\nCode: ||" + subject.getCode() + "||", true);
+			eb.setTitle("РР·РІРµСЃС‚РёРµ Р·Р° С‡Р°СЃ!");
+			eb.addField("РџСЂРµРґРјРµС‚: " + subject.getName(),
+					"в„– РЅР° С‡Р°СЃ: " + subject.getPosition() + "\nРљРѕРґ: ||" + subject.getCode() + "||", true);
 
-			eb.setFooter("Изпратено на @2ра група");
+			eb.addField("РњРµСЃС‚РѕРїРѕР»РѕР¶РµРЅРёРµ: " + subject.getLocation(), "`РќР°С‡Р°Р»Рѕ:` **" + subject.getStartTime()
+					+ "**\n`РљСЂР°Р№:` **" + subject.getEndTime() + "**\n`РЎР»РµРґРІР°С‰ С‡Р°СЃ:` **" + subject.getNextTime() + "**",
+					true);
+
+			eb.setFooter("РР·РїСЂР°С‚РµРЅРѕ РЅР° @2СЂР° РіСЂСѓРїР°");
 
 			eb.setColor(Color.RED);
 			eb.setThumbnail(imgPNG);

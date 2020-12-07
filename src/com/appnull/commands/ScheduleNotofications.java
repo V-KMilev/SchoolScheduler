@@ -69,7 +69,6 @@ import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 public class ScheduleNotofications extends ListenerAdapter {
 
 	private final List<String> scheduledTasksLog = new ArrayList<String>();
-	private final List<String> accessMembers = new ArrayList<String>();
 	private final Map<Integer, List<Subject>> schoolSchedule;
 
 	private final DateTimeFormatter formatter;
@@ -155,11 +154,7 @@ public class ScheduleNotofications extends ListenerAdapter {
 
 		boolean access = false;
 
-//		accessMembers.add("266695705786056704");
-//		accessMembers.add("176728844034637824");
-		accessMembers.add("318688044523716608");
-
-		accessMember = event.getGuild().getMemberById(accessMembers.get(0));
+		accessMember = event.getGuild().getMemberById("318688044523716608");
 
 		if (currentMember.equals(owner) || currentMember.equals(accessMember)) {
 			access = true;
@@ -178,15 +173,20 @@ public class ScheduleNotofications extends ListenerAdapter {
 			EmbedBuilder eb = new EmbedBuilder();
 
 			eb.setTitle("CraftCN - HELP");
-			eb.addField("> !schedule", "Създаване на програмa", true);
-			eb.addField("> !getschedule", "Принтиране на програма", true);
-			eb.addField("> !getprogram", "Програма", true);
-			eb.setFooter("For more help CurrentlyNull#3126 or vilimir.k.milev@gmail.com");
+			eb.addField("> **!schedule**", "**Създаване** на програмa", true);
+			eb.addField("> **!getschedule**", "**Принтиране** на програма", true);
+			eb.addField("> **!getprogram**", "Програма", true);
+			eb.setFooter("! For more help CurrentlyNull#3126 or vilimir.k.milev@gmail.com");
 
 			eb.setColor(Color.RED);
-			eb.setThumbnail("https://cdn.discordapp.com/attachments/711858389067759708/772785636029104158/haah.png");
+			eb.setThumbnail("https://cdn.discordapp.com/attachments/710039794884935743/785396990242455613/haah_-_Copy_-_Copy_-_Copy.png");
 
 			event.getChannel().sendMessage(eb.build()).queue();
+		}
+
+		if (message.contentEquals("!kys") || message.contentEquals("!KYS")) {
+
+			event.getChannel().sendMessage("NO! KYS " + event.getMember().getAsMention()).queue();
 		}
 
 		if (getAccessMember(event)) {
@@ -202,8 +202,8 @@ public class ScheduleNotofications extends ListenerAdapter {
 
 			if (message.contentEquals("!getschedule")) {
 
-				event.getChannel().sendMessage("**CraftCN End-Date: " + endDate + "** ||**Scheduler: "
-						+ event.getMember().getAsMention() + "**||").queue();
+				event.getChannel().sendMessage("**CraftCN | " + "Server: `" + event.getGuild().getName() + "` End-Date: `"
+						+ endDate + "`** **Scheduler: " + event.getMember().getAsMention() + "**").queue();
 				for (String task : scheduledTasksLog) {
 					event.getChannel().sendMessage(task).queue();
 				}
@@ -221,7 +221,8 @@ public class ScheduleNotofications extends ListenerAdapter {
 	}
 
 	private void scheduleTasks(GuildMessageReceivedEvent event) throws ParseException, IOException {
-		System.out.println("CraftCN End-Date: " + endDate + " Scheduler: " + event.getMember().getUser());
+		System.out.println("CraftCN " + "Server: " + event.getGuild().getName() + " End-Date: " + endDate
+				+ " Scheduler: " + event.getMember().getUser());
 
 		SimpleDateFormat dateFormater = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 		LocalDate startDate = LocalDate.now();
