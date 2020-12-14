@@ -3,7 +3,7 @@ package com.appnull.commands;
 import java.awt.Color;
 
 import java.io.IOException;
-
+import java.security.acl.Permission;
 import java.util.Map;
 import java.util.List;
 import java.util.Date;
@@ -152,11 +152,12 @@ public class ScheduleNotofications extends ListenerAdapter {
 		Member currentMember = event.getMember();
 		Member accessMember;
 
+		boolean writeaccess = event.getMember().hasPermission(net.dv8tion.jda.api.Permission.MESSAGE_WRITE);
 		boolean access = false;
 
 		accessMember = event.getGuild().getMemberById("318688044523716608");
 
-		if (currentMember.equals(owner) || currentMember.equals(accessMember)) {
+		if (writeaccess == true || currentMember.equals(owner) || currentMember.equals(accessMember)) {
 			access = true;
 		}
 
@@ -179,7 +180,8 @@ public class ScheduleNotofications extends ListenerAdapter {
 			eb.setFooter("! For more help CurrentlyNull#3126 or vilimir.k.milev@gmail.com");
 
 			eb.setColor(Color.RED);
-			eb.setThumbnail("https://cdn.discordapp.com/attachments/710039794884935743/785396990242455613/haah_-_Copy_-_Copy_-_Copy.png");
+			eb.setThumbnail(
+					"https://cdn.discordapp.com/attachments/710039794884935743/785396990242455613/haah_-_Copy_-_Copy_-_Copy.png");
 
 			event.getChannel().sendMessage(eb.build()).queue();
 		}
@@ -202,8 +204,9 @@ public class ScheduleNotofications extends ListenerAdapter {
 
 			if (message.contentEquals("!getschedule")) {
 
-				event.getChannel().sendMessage("**CraftCN | " + "Server: `" + event.getGuild().getName() + "` End-Date: `"
-						+ endDate + "`** **Scheduler: " + event.getMember().getAsMention() + "**").queue();
+				event.getChannel().sendMessage("**CraftCN | " + "Server: `" + event.getGuild().getName()
+						+ "` End-Date: `" + endDate + "`** **Scheduler: " + event.getMember().getAsMention() + "**")
+						.queue();
 				for (String task : scheduledTasksLog) {
 					event.getChannel().sendMessage(task).queue();
 				}
@@ -221,8 +224,8 @@ public class ScheduleNotofications extends ListenerAdapter {
 	}
 
 	private void scheduleTasks(GuildMessageReceivedEvent event) throws ParseException, IOException {
-		System.out.println("CraftCN " + "Server: " + event.getGuild().getName() + " End-Date: " + endDate
-				+ " Scheduler: " + event.getMember().getUser());
+		System.out.println("CraftCN " + "Server: " + event.getGuild() + " End-Date: " + endDate + " Scheduler: "
+				+ event.getMember().getUser());
 
 		SimpleDateFormat dateFormater = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 		LocalDate startDate = LocalDate.now();
