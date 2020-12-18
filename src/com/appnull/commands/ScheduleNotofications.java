@@ -3,7 +3,6 @@ package com.appnull.commands;
 import java.awt.Color;
 
 import java.io.IOException;
-import java.security.acl.Permission;
 import java.util.Map;
 import java.util.List;
 import java.util.Date;
@@ -148,7 +147,7 @@ public class ScheduleNotofications extends ListenerAdapter {
 	}
 
 	private boolean getAccessMember(GuildMessageReceivedEvent event) {
-		Member owner = event.getGuild().getMemberById("266695705786056704");
+		Member owner = event.getGuild().getMemberById("318688044523716608");
 		Member currentMember = event.getMember();
 		Member accessMember;
 
@@ -176,7 +175,7 @@ public class ScheduleNotofications extends ListenerAdapter {
 			eb.setTitle("CraftCN - HELP");
 			eb.addField("> **!schedule**", "**Създаване** на програмa", true);
 			eb.addField("> **!getschedule**", "**Принтиране** на програма", true);
-			eb.addField("> **!getprogram**", "Програма", true);
+			eb.addField("> **!getcodes**", "Кодове", true);
 			eb.setFooter("! For more help CurrentlyNull#3126 or vilimir.k.milev@gmail.com");
 
 			eb.setColor(Color.RED);
@@ -190,7 +189,7 @@ public class ScheduleNotofications extends ListenerAdapter {
 
 			EmbedBuilder eb = new EmbedBuilder();
 
-			eb.setTitle("CraftCN - HELP");
+			eb.setTitle("CraftCN - SUBJECT CODE");
 			eb.addField("> **КА**", "**КОД: ||hzxzzjo||**", true);
 			eb.addField("> **УП-КА гр.1**", "**КОД: ||vb99omq||**", true);
 			eb.addField("> **УП-КА гр.2**", "**КОД: ||3341wao||**", true);
@@ -215,14 +214,19 @@ public class ScheduleNotofications extends ListenerAdapter {
 
 			eb.setColor(Color.RED);
 			eb.setThumbnail(
-					"https://cdn.discordapp.com/attachments/710039794884935743/785396990242455613/haah_-_Copy_-_Copy_-_Copy.png");
+					"https://cdn.discordapp.com/attachments/528269500269723658/772904455548305428/programa_11d.PNG");
 
 			event.getChannel().sendMessage(eb.build()).queue();
 		}
 
 		if (message.contentEquals("!kys") || message.contentEquals("!KYS")) {
+			if (event.getMember().equals(event.getGuild().getMemberById("266695705786056704"))) {
+				event.getChannel().sendMessage("I love you too " + event.getMember().getAsMention()).queue();
 
-			event.getChannel().sendMessage("NO! KYS " + event.getMember().getAsMention()).queue();
+			} else {
+				event.getChannel().sendMessage("NO! KYS " + event.getMember().getAsMention()).queue();
+
+			}
 		}
 
 		if (getAccessMember(event)) {
@@ -249,10 +253,8 @@ public class ScheduleNotofications extends ListenerAdapter {
 		} else if (message.contentEquals("!schedule")
 				|| message.contentEquals("!getschedule") && !getAccessMember(event)) {
 
-			event.getChannel()
-					.sendMessage("**CraftCN Report | " + event.getMember().getAsMention()
-							+ "** doesn't have access.. **[ERROR]**" + "\nUse **!helpss** for more information!")
-					.queue();
+			event.getChannel().sendMessage("**CraftCN Error | " + event.getMember().getAsMention()
+					+ "** Null-Permitions" + "\nUse **!helpss** for more information!").queue();
 			event.getMessage().delete().queue();
 		}
 	}
@@ -286,7 +288,7 @@ public class ScheduleNotofications extends ListenerAdapter {
 					Date scheduledTime = dateFormater.parse(dateString);
 
 					int max = 999999999;
-					int min = 900000000;
+					int min = 987654321;
 					int accessToken = (int) (Math.random() * (max - min + 1) + min);
 
 					String loc = "";
@@ -299,14 +301,13 @@ public class ScheduleNotofications extends ListenerAdapter {
 						loc = "NULL";
 					}
 
-					String logMessageSOUT = "CraftCN " + accessToken + "-accessToken " + // accessMember.getUser() +
-							"Scheduled task for: " + scheduledTime + " Subject: " + subject.getName() + " ["
-							+ subject.getPosition() + "] - " + loc + " " + subject.getCode();
+					String logMessageSOUT = "CraftCN " + accessToken + "-accessToken " + "Scheduled task for: "
+							+ scheduledTime + " Subject: " + subject.getName() + " [" + subject.getPosition() + "] - "
+							+ loc + " " + subject.getCode();
 
-					String logMessageJDA = "**CraftCN** ||" + accessToken + "-accessToken|| " + // accessMember.getUser()
-																								// +
-							"**Scheduled task for:** `" + scheduledTime + "` **Subject:** `" + subject.getName()
-							+ "` **[" + subject.getPosition() + "] | `" + loc + "` ||" + subject.getCode() + "||**";
+					String logMessageJDA = "**CraftCN** ||" + accessToken + "-accessToken|| "
+							+ "**Scheduled task for:** `" + scheduledTime + "` **Subject:** `" + subject.getName()
+							+ "` **# " + subject.getPosition() + " | `" + loc + "` ||" + subject.getCode() + "||**";
 
 					System.out.println(logMessageSOUT);
 					this.scheduledTasksLog.add(logMessageJDA);
