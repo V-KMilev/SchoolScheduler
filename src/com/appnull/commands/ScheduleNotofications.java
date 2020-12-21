@@ -147,20 +147,37 @@ public class ScheduleNotofications extends ListenerAdapter {
 	}
 
 	private boolean getAccessMember(GuildMessageReceivedEvent event) {
-		Member owner = event.getGuild().getMemberById("318688044523716608");
+		Member owner = event.getGuild().getMemberById("266695705786056704");
 		Member currentMember = event.getMember();
 		Member accessMember;
 
-		boolean writeaccess = event.getMember().hasPermission(net.dv8tion.jda.api.Permission.MESSAGE_WRITE);
-		boolean access = false;
-
 		accessMember = event.getGuild().getMemberById("318688044523716608");
 
-		if (writeaccess == true || currentMember.equals(owner) || currentMember.equals(accessMember)) {
-			access = true;
-		}
+		boolean writeaccess = event.getMember().hasPermission(net.dv8tion.jda.api.Permission.MESSAGE_WRITE);
 
-		return access;
+		if (writeaccess == true || currentMember.equals(owner) || currentMember.equals(accessMember)) {
+			return true;
+
+		} else {
+			return false;
+		}
+	}
+
+	private boolean getMessageRights(GuildMessageReceivedEvent event, String message) {
+		message = event.getMessage().getContentRaw();
+
+		Member currentMember = event.getMember();
+		Member bot = event.getGuild().getMemberById("710038411586699335");
+
+		if (message.contentEquals("!helpss") || message.contentEquals("!getcodes") || message.contentEquals("!kys")
+				|| message.contentEquals("!KYS") || message.contentEquals("!schedule")
+				|| message.contentEquals("!getschedule") || currentMember.equals(bot)) {
+
+			return true;
+
+		} else {
+			return false;
+		}
 	}
 
 	@Override
@@ -168,93 +185,99 @@ public class ScheduleNotofications extends ListenerAdapter {
 
 		String message = event.getMessage().getContentRaw();
 
-		if (message.contentEquals("!helpss")) {
+		if (getMessageRights(event, message)) {
 
-			EmbedBuilder eb = new EmbedBuilder();
+			if (message.contentEquals("!helpss")) {
 
-			eb.setTitle("CraftCN - HELP");
-			eb.addField("> **!schedule**", "**Ñúçäàâàíå** íà ïðîãðàìa", true);
-			eb.addField("> **!getschedule**", "**Ïðèíòèðàíå** íà ïðîãðàìà", true);
-			eb.addField("> **!getcodes**", "Êîäîâå", true);
-			eb.setFooter("! For more help CurrentlyNull#3126 or vilimir.k.milev@gmail.com");
+				EmbedBuilder eb = new EmbedBuilder();
 
-			eb.setColor(Color.RED);
-			eb.setThumbnail(
-					"https://cdn.discordapp.com/attachments/710039794884935743/785396990242455613/haah_-_Copy_-_Copy_-_Copy.png");
+				eb.setTitle("CraftCN - HELP");
+				eb.addField("> **!schedule**", "**Ñúçäàâàíå** íà ïðîãðàìa", true);
+				eb.addField("> **!getschedule**", "**Ïðèíòèðàíå** íà ïðîãðàìà", true);
+				eb.addField("> **!getcodes**", "Êîäîâå", true);
+				eb.addField("> **!kys**", "kys = bad", true);
+				eb.setFooter("! For more help CurrentlyNull#3126 or vilimir.k.milev@gmail.com");
 
-			event.getChannel().sendMessage(eb.build()).queue();
-		}
+				eb.setColor(Color.RED);
+				eb.setThumbnail(
+						"https://cdn.discordapp.com/attachments/710039794884935743/785396990242455613/haah_-_Copy_-_Copy_-_Copy.png");
 
-		if (message.contentEquals("!getcodes")) {
-
-			EmbedBuilder eb = new EmbedBuilder();
-
-			eb.setTitle("CraftCN - SUBJECT CODE");
-			eb.addField("> **ÊÀ**", "**ÊÎÄ: ||hzxzzjo||**", true);
-			eb.addField("> **ÓÏ-ÊÀ ãð.1**", "**ÊÎÄ: ||vb99omq||**", true);
-			eb.addField("> **ÓÏ-ÊÀ ãð.2**", "**ÊÎÄ: ||3341wao||**", true);
-			eb.addField("> **ÖÑ**", "**ÊÎÄ: ||ew6szka||**", true);
-			eb.addField("> **ÓÏ-Ñõåì ãð.1**", "**ÊÎÄ: ||4vtm2fj||**", true);
-			eb.addField("> **ÓÏ-Ñõåì ãð.2**", "**ÊÎÄ: ||1znwjk1||**", true);
-			eb.addField("> **ÇÏÓ**", "**ÊÎÄ: ||3m9tmd5||**", true);
-			eb.addField("> **ÓÏ-ÇÏÓ ãð.1**", "**ÊÎÄ: ||ky2j7rs||**", true);
-			eb.addField("> **ÓÏ-ÇÏÓ ãð.2**", "**ÊÎÄ: ||6nstghk||**", true);
-			eb.addField("> **ÎÑ**", "**ÊÎÄ: ||6sgsil2||**", true);
-			eb.addField("> **ÓÏ-ÎÑ ãð.1**", "**ÊÎÄ: ||8oumx66||**", true);
-			eb.addField("> **ÓÏ-ÎÑ ãð.2**", "**ÊÎÄ: ||6sgsil2||**", true);
-			eb.addField("> **ÊÌ**", "**ÊÎÄ: ||gyix9kd||**", true);
-			eb.addField("> **ÌÀÒ**", "**ÊÎÄ: ||fcs8b64||**", true);
-			eb.addField("> **×ÅÏ**", "**ÊÎÄ: ||vva8xiv||**", true);
-			eb.addField("> **ÁÅË**", "**ÊÎÄ: ||b2x1o8k||**", true);
-			eb.addField("> **ÍÅ**", "**ÊÎÄ: ||r3g6lg3||**", true);
-			eb.addField("> **ÃÎ**", "**ÊÎÄ: ||pkiaoay||**", true);
-			eb.addField("> **ÑÄ**", "**ÊÎÄ: ||mcsehdp||**", true);
-			eb.addField("> **ÔÂÑ**", "**ÊÎÄ: ||mcsehdp||**", true);
-			eb.setFooter("! For more help CurrentlyNull#3126 or vilimir.k.milev@gmail.com");
-
-			eb.setColor(Color.RED);
-			eb.setThumbnail(
-					"https://cdn.discordapp.com/attachments/528269500269723658/772904455548305428/programa_11d.PNG");
-
-			event.getChannel().sendMessage(eb.build()).queue();
-		}
-
-		if (message.contentEquals("!kys") || message.contentEquals("!KYS")) {
-			if (event.getMember().equals(event.getGuild().getMemberById("266695705786056704"))) {
-				event.getChannel().sendMessage("I love you too " + event.getMember().getAsMention()).queue();
-
-			} else {
-				event.getChannel().sendMessage("NO! KYS " + event.getMember().getAsMention()).queue();
-
+				event.getChannel().sendMessage(eb.build()).queue();
 			}
-		}
 
-		if (getAccessMember(event)) {
-			if (message.contentEquals("!schedule")) {
+			if (message.contentEquals("!getcodes")) {
 
-				try {
-					scheduleTasks(event);
+				EmbedBuilder eb = new EmbedBuilder();
 
-				} catch (IOException | ParseException e) {
-					event.getChannel().sendMessage("Error!").queue();
+				eb.setTitle("CraftCN - SUBJECT CODE");
+				eb.addField("> **ÊÀ**", "**ÊÎÄ: ||hzxzzjo||**", true);
+				eb.addField("> **ÓÏ-ÊÀ ãð.1**", "**ÊÎÄ: ||vb99omq||**", true);
+				eb.addField("> **ÓÏ-ÊÀ ãð.2**", "**ÊÎÄ: ||3341wao||**", true);
+				eb.addField("> **ÖÑ**", "**ÊÎÄ: ||ew6szka||**", true);
+				eb.addField("> **ÓÏ-Ñõåì ãð.1**", "**ÊÎÄ: ||4vtm2fj||**", true);
+				eb.addField("> **ÓÏ-Ñõåì ãð.2**", "**ÊÎÄ: ||1znwjk1||**", true);
+				eb.addField("> **ÇÏÓ**", "**ÊÎÄ: ||3m9tmd5||**", true);
+				eb.addField("> **ÓÏ-ÇÏÓ ãð.1**", "**ÊÎÄ: ||ky2j7rs||**", true);
+				eb.addField("> **ÓÏ-ÇÏÓ ãð.2**", "**ÊÎÄ: ||6nstghk||**", true);
+				eb.addField("> **ÎÑ**", "**ÊÎÄ: ||6sgsil2||**", true);
+				eb.addField("> **ÓÏ-ÎÑ ãð.1**", "**ÊÎÄ: ||8oumx66||**", true);
+				eb.addField("> **ÓÏ-ÎÑ ãð.2**", "**ÊÎÄ: ||6sgsil2||**", true);
+				eb.addField("> **ÊÌ**", "**ÊÎÄ: ||gyix9kd||**", true);
+				eb.addField("> **ÌÀÒ**", "**ÊÎÄ: ||fcs8b64||**", true);
+				eb.addField("> **×ÅÏ**", "**ÊÎÄ: ||vva8xiv||**", true);
+				eb.addField("> **ÁÅË**", "**ÊÎÄ: ||b2x1o8k||**", true);
+				eb.addField("> **ÍÅ**", "**ÊÎÄ: ||r3g6lg3||**", true);
+				eb.addField("> **ÃÎ**", "**ÊÎÄ: ||pkiaoay||**", true);
+				eb.addField("> **ÑÄ**", "**ÊÎÄ: ||mcsehdp||**", true);
+				eb.addField("> **ÔÂÑ**", "**ÊÎÄ: ||mcsehdp||**", true);
+				eb.setFooter("! For more help CurrentlyNull#3126 or vilimir.k.milev@gmail.com");
+
+				eb.setColor(Color.RED);
+				eb.setThumbnail(
+						"https://cdn.discordapp.com/attachments/528269500269723658/772904455548305428/programa_11d.PNG");
+
+				event.getChannel().sendMessage(eb.build()).queue();
+			}
+
+			if (message.contentEquals("!kys") || message.contentEquals("!KYS")) {
+				if (event.getMember().equals(event.getGuild().getMemberById("266695705786056704"))) {
+					event.getChannel().sendMessage("I love you too " + event.getMember().getAsMention()).queue();
+
+				} else {
+					event.getChannel().sendMessage("NO! KYS " + event.getMember().getAsMention()).queue();
+
 				}
 			}
 
-			if (message.contentEquals("!getschedule")) {
+			if (getAccessMember(event)) {
+				if (message.contentEquals("!schedule")) {
 
-				event.getChannel().sendMessage("**CraftCN | " + "Server: `" + event.getGuild().getName()
-						+ "` End-Date: `" + endDate + "`** **Scheduler: " + event.getMember().getAsMention() + "**")
-						.queue();
-				for (String task : scheduledTasksLog) {
-					event.getChannel().sendMessage(task).queue();
+					try {
+						scheduleTasks(event);
+
+					} catch (IOException | ParseException e) {
+						event.getChannel().sendMessage("Error!").queue();
+					}
 				}
+
+				if (message.contentEquals("!getschedule")) {
+
+					event.getChannel().sendMessage("**CraftCN | " + "Server: `" + event.getGuild().getName()
+							+ "` End-Date: `" + endDate + "`** **Scheduler: " + event.getMember().getAsMention() + "**")
+							.queue();
+					for (String task : scheduledTasksLog) {
+						event.getChannel().sendMessage(task).queue();
+					}
+				}
+
+			} else if (message.contentEquals("!schedule")
+					|| message.contentEquals("!getschedule") && !getAccessMember(event)) {
+
+				event.getChannel().sendMessage("**CraftCN Error | " + event.getMember().getAsMention()
+						+ "** Null-Permitions" + "\nUse **!helpss** for more information!").queue();
+				event.getMessage().delete().queue();
 			}
-
-		} else if (message.contentEquals("!schedule")
-				|| message.contentEquals("!getschedule") && !getAccessMember(event)) {
-
-			event.getChannel().sendMessage("**CraftCN Error | " + event.getMember().getAsMention()
-					+ "** Null-Permitions" + "\nUse **!helpss** for more information!").queue();
+		} else {
 			event.getMessage().delete().queue();
 		}
 	}
