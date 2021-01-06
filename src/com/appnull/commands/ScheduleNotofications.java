@@ -75,10 +75,12 @@ public class ScheduleNotofications extends ListenerAdapter {
 	private final Calendar calendar;
 	private final Timer timer;
 
+	private String reportScheduledTasksLog;
+
 	public ScheduleNotofications() throws ParseException {
 
 		this.formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
-		this.endDate = LocalDate.parse("01/01/2021 23:59:59", formatter);
+		this.endDate = LocalDate.parse("31/01/2021 23:59:59", formatter);
 		this.schoolSchedule = new HashedMap<Integer, List<Subject>>();
 		this.calendar = Calendar.getInstance();
 		this.timer = new Timer();
@@ -171,7 +173,8 @@ public class ScheduleNotofications extends ListenerAdapter {
 
 		if (message.contentEquals("!helpss") || message.contentEquals("!getcodes") || message.contentEquals("!kys")
 				|| message.contentEquals("!KYS") || message.contentEquals("!schedule")
-				|| message.contentEquals("!getschedule") || currentMember.equals(bot)) {
+				|| message.contentEquals("!getschedule") || message.contentEquals("!report")
+				|| currentMember.equals(bot)) {
 
 			return true;
 
@@ -195,7 +198,7 @@ public class ScheduleNotofications extends ListenerAdapter {
 				eb.addField("> **!schedule**", "**Създаване** на програмa", true);
 				eb.addField("> **!getschedule**", "**Принтиране** на програма", true);
 				eb.addField("> **!getcodes**", "Кодове", true);
-				eb.addField("> **!kys**", "kys = bad", true);
+				eb.addField("> **!kys**", "kys?", true);
 				eb.setFooter("! For more help CurrentlyNull#3126 or vilimir.k.milev@gmail.com");
 
 				eb.setColor(Color.RED);
@@ -245,8 +248,12 @@ public class ScheduleNotofications extends ListenerAdapter {
 
 				} else {
 					event.getChannel().sendMessage("NO! KYS " + event.getMember().getAsMention()).queue();
-
 				}
+			}
+
+			if (message.contentEquals("!report")) {
+				event.getChannel().sendMessage(reportScheduledTasksLog).queue();
+
 			}
 
 			if (getAccessMember(event)) {
@@ -280,6 +287,24 @@ public class ScheduleNotofications extends ListenerAdapter {
 		} else {
 			event.getMessage().delete().queue();
 		}
+	}
+
+	private void scheduleLogReport() {
+		String Report = "";
+		String logReport = Report;
+
+		for (int l = 0; scheduledTasksLog.size() > l; l++) {
+			if (scheduledTasksLog.get(l).contains("LL")) {
+				Report = "0 ";
+
+			} else {
+				Report = "1 ";
+
+			}
+			logReport += Report;
+		}
+		this.reportScheduledTasksLog = logReport;
+
 	}
 
 	private void scheduleTasks(GuildMessageReceivedEvent event) throws ParseException, IOException {
@@ -333,7 +358,9 @@ public class ScheduleNotofications extends ListenerAdapter {
 							+ "` **# " + subject.getPosition() + " | `" + loc + "` ||" + subject.getCode() + "||**";
 
 					System.out.println(logMessageSOUT);
+
 					this.scheduledTasksLog.add(logMessageJDA);
+					scheduleLogReport();
 
 					timer.schedule(new Notify(event, subject), scheduledTime);
 
