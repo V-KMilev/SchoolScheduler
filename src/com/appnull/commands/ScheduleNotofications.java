@@ -53,6 +53,7 @@ import com.appnull.commands.notifications.subjects.locations.NoLocation;
 import com.appnull.commands.notifications.subjects.times.FirstSubject;
 import com.appnull.commands.notifications.subjects.times.SecondSubject;
 import com.appnull.commands.notifications.subjects.times.ThirthSubject;
+import com.appnull.commands.permissions.RoleMannager;
 import com.appnull.commands.notifications.subjects.times.FourthSubject;
 import com.appnull.commands.notifications.subjects.times.FifthSubject;
 import com.appnull.commands.notifications.subjects.times.SixthSubject;
@@ -173,7 +174,8 @@ public class ScheduleNotofications extends ListenerAdapter {
 
 		if (message.contentEquals("!helpss") || message.contentEquals("!getcodes") || message.contentEquals("!kys")
 				|| message.contentEquals("!KYS") || message.contentEquals("!schedule")
-				|| message.contentEquals("!getschedule") || message.contentEquals("!report")
+				|| message.contentEquals("!getschedule") || message.contentEquals("!report") || message.contains("!add")
+				|| message.contains("!remove") || message.contains("!Allah") || message.contains("!NoAllah")
 				|| currentMember.equals(bot)) {
 
 			return true;
@@ -186,7 +188,25 @@ public class ScheduleNotofications extends ListenerAdapter {
 	@Override
 	public void onGuildMessageReceived(GuildMessageReceivedEvent event) {
 
+		RoleMannager roleMannager = new RoleMannager();
+
 		String message = event.getMessage().getContentRaw();
+
+		if (message.contains("!add")) {
+			roleMannager.handed(event, "176728844034637824", true);
+		}
+
+		if (message.contains("!remove")) {
+			roleMannager.handed(event, "176728844034637824", false);
+		}
+
+		if (message.contains("!Allah")) {
+			roleMannager.automatically(event, "176728844034637824", true);
+		}
+
+		if (message.contains("!NoAllah")) {
+			roleMannager.automatically(event, "176728844034637824", false);
+		}
 
 		if (getMessageRights(event, message)) {
 
@@ -295,10 +315,10 @@ public class ScheduleNotofications extends ListenerAdapter {
 
 		for (int l = 0; scheduledTasksLog.size() > l; l++) {
 			if (scheduledTasksLog.get(l).contains("LL")) {
-				Report = "0 ";
+				Report = "1";
 
 			} else {
-				Report = "1 ";
+				Report = "0";
 
 			}
 			logReport += Report;
