@@ -193,19 +193,19 @@ public class ScheduleNotofications extends ListenerAdapter {
 		String message = event.getMessage().getContentRaw();
 
 		if (message.contains("!add")) {
-			roleMannager.handed(event, "176728844034637824", true);
+			roleMannager.handed(event, "266695705786056704", true);
 		}
 
 		if (message.contains("!remove")) {
-			roleMannager.handed(event, "176728844034637824", false);
+			roleMannager.handed(event, "266695705786056704", false);
 		}
 
 		if (message.contains("!Allah")) {
-			roleMannager.automatically(event, "176728844034637824", true);
+			roleMannager.automatically(event, "266695705786056704", true);
 		}
 
 		if (message.contains("!NoAllah")) {
-			roleMannager.automatically(event, "176728844034637824", false);
+			roleMannager.automatically(event, "266695705786056704", false);
 		}
 
 		if (getMessageRights(event, message)) {

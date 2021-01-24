@@ -44,7 +44,7 @@ public class RoleMannager {
 
 		List<Member> members = guild.getMembers();
 
-		Role role = guild.getRolesByName("¿Õ¿–’»ﬂ", true).get(0);
+		Role role = guild.getRolesByName("tester", true).get(0);
 
 		if (accessMember.equals(event.getMember().getId())) {
 
