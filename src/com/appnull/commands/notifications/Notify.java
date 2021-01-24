@@ -48,7 +48,8 @@ public class Notify extends TimerTask {
 
 			eb.setTitle("Известие за час!");
 			eb.addField("Предмет: " + subject.getName(),
-					"`№ на час:` **" + subject.getPosition() + "**\n**`Код:`** ||**" + subject.getCode() + "**||", true);
+					"`№ на час:` **" + subject.getPosition() + "**\n**`Код:`** ||**" + subject.getCode() + "**||",
+					true);
 
 			eb.addField("Местоположение: " + subject.getLocation(), "`Начало:` **" + subject.getStartTime()
 					+ "**\n`Край:` **" + subject.getEndTime() + "**\n`Следващ час:` **" + subject.getNextTime() + "**",
@@ -69,7 +70,8 @@ public class Notify extends TimerTask {
 
 			eb.setTitle("Известие за час!");
 			eb.addField("Предмет: " + subject.getName(),
-					"`№ на час:` **" + subject.getPosition() + "**\n**`Код:`** ||**" + subject.getCode() + "**||", true);
+					"`№ на час:` **" + subject.getPosition() + "**\n**`Код:`** ||**" + subject.getCode() + "**||",
+					true);
 
 			eb.addField("Местоположение: " + subject.getLocation(), "`Начало:` **" + subject.getStartTime()
 					+ "**\n`Край:` **" + subject.getEndTime() + "**\n`Следващ час:` **" + subject.getNextTime() + "**",
@@ -90,7 +92,8 @@ public class Notify extends TimerTask {
 
 			eb.setTitle("Известие за час!");
 			eb.addField("Предмет: " + subject.getName(),
-					"`№ на час:` **" + subject.getPosition() + "**\n**`Код:`** ||**" + subject.getCode() + "**||", true);
+					"`№ на час:` **" + subject.getPosition() + "**\n**`Код:`** ||**" + subject.getCode() + "**||",
+					true);
 
 			eb.addField("Местоположение: " + subject.getLocation(), "`Начало:` **" + subject.getStartTime()
 					+ "**\n`Край:` **" + subject.getEndTime() + "**\n`Следващ час:` **" + subject.getNextTime() + "**",

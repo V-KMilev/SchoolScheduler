@@ -15,7 +15,7 @@ public class EighthSubject implements SubjectTime {
 	public String getEndTime() {
 		return "14:30";
 	}
-	
+
 	@Override
 	public String getNextTime() {
 		return "14:40";
