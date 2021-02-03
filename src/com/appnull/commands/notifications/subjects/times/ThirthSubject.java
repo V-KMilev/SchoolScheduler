@@ -8,17 +8,17 @@ public class ThirthSubject implements SubjectTime {
 
 	@Override
 	public LocalTime getStartTime() {
-		return LocalTime.parse("09:40");
+		return LocalTime.parse("14:10");
 	}
 
 	@Override
 	public String getEndTime() {
-		return "10:20";
+		return "14:50";
 	}
 
 	@Override
 	public String getNextTime() {
-		return "10:30";
+		return "15:00";
 	}
 
 	@Override

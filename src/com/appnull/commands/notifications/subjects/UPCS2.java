@@ -2,15 +2,15 @@ package com.appnull.commands.notifications.subjects;
 
 import com.appnull.commands.notifications.base.SubjectName;
 
-public class Mat implements SubjectName {
+public class UPCS2 implements SubjectName {
 
 	@Override
 	public String getName() {
-		return "Математика";
+		return "Цифрова схемотехника (УП-схем.) ПРАКТИКА, гр.2";
 	}
 
 	@Override
 	public String getCode() {
-		return "fcs8b64";
+		return "1znwjk1";
 	}
 }

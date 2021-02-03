@@ -19,94 +19,48 @@ public class Notify extends TimerTask {
 		this.subject = subject;
 	}
 
-	@Override
-	public void run() {
+	public void messageBase(String mantion) {
+
+		String imgPNG = "https://cdn.discordapp.com/attachments/528269500269723658/772904455548305428/programa_11d.PNG";
+
+		EmbedBuilder eb = new EmbedBuilder();
+
+		eb.setTitle("Известие за час!");
+		eb.addField("Предмет: " + subject.getName(),
+				"`№ на час:` **" + subject.getPosition() + "**\n**`Код:`** ||**" + subject.getCode() + "**||", true);
+
+		eb.addField("Местоположение: " + subject.getLocation(), "`Начало:` **" + subject.getStartTime()
+				+ "**\n`Край:` **" + subject.getEndTime() + "**\n`Следващ час:` **" + subject.getNextTime() + "**",
+				true);
+
+		eb.setFooter("Изпратено на " + mantion);
+		eb.setColor(Color.RED);
+		eb.setThumbnail(imgPNG);
+
+		event.getChannel().sendMessage(mantion).queue();
+		event.getChannel().sendMessage(eb.build()).queue();
+	}
+
+	public void getCurrentClass() {
 
 		String classD11 = "<@&507287205698600961>";
 		String group1 = "<@&711826223742844931>";
 		String group2 = "<@&711826277790777424>";
 
-		String imgPNG = "https://cdn.discordapp.com/attachments/528269500269723658/772904455548305428/programa_11d.PNG";
-
-		boolean getClassD11 = false;
-		boolean getGroup1 = false;
-		boolean getGroup2 = false;
-
 		for (int i = 0; i < subject.getName().length(); i++) {
-
 			if (subject.getName().indexOf('1') != -1)
-				getGroup1 = true;
+				messageBase(classD11);
+
 			else if (subject.getName().indexOf('2') != -1)
-				getGroup2 = true;
+				messageBase(group1);
+
 			else
-				getClassD11 = true;
-		}
-
-		if (getClassD11) {
-
-			EmbedBuilder eb = new EmbedBuilder();
-
-			eb.setTitle("Известие за час!");
-			eb.addField("Предмет: " + subject.getName(),
-					"`№ на час:` **" + subject.getPosition() + "**\n**`Код:`** ||**" + subject.getCode() + "**||",
-					true);
-
-			eb.addField("Местоположение: " + subject.getLocation(), "`Начало:` **" + subject.getStartTime()
-					+ "**\n`Край:` **" + subject.getEndTime() + "**\n`Следващ час:` **" + subject.getNextTime() + "**",
-					true);
-
-			eb.setFooter("Изпратено на @11Д");
-
-			eb.setColor(Color.RED);
-			eb.setThumbnail(imgPNG);
-
-			event.getChannel().sendMessage(classD11).queue();
-			event.getChannel().sendMessage(eb.build()).queue();
-		}
-
-		if (getGroup1) {
-
-			EmbedBuilder eb = new EmbedBuilder();
-
-			eb.setTitle("Известие за час!");
-			eb.addField("Предмет: " + subject.getName(),
-					"`№ на час:` **" + subject.getPosition() + "**\n**`Код:`** ||**" + subject.getCode() + "**||",
-					true);
-
-			eb.addField("Местоположение: " + subject.getLocation(), "`Начало:` **" + subject.getStartTime()
-					+ "**\n`Край:` **" + subject.getEndTime() + "**\n`Следващ час:` **" + subject.getNextTime() + "**",
-					true);
-
-			eb.setFooter("Изпратено на @1ва група");
-
-			eb.setColor(Color.RED);
-			eb.setThumbnail(imgPNG);
-
-			event.getChannel().sendMessage(group1).queue();
-			event.getChannel().sendMessage(eb.build()).queue();
-		}
-
-		if (getGroup2) {
-
-			EmbedBuilder eb = new EmbedBuilder();
-
-			eb.setTitle("Известие за час!");
-			eb.addField("Предмет: " + subject.getName(),
-					"`№ на час:` **" + subject.getPosition() + "**\n**`Код:`** ||**" + subject.getCode() + "**||",
-					true);
-
-			eb.addField("Местоположение: " + subject.getLocation(), "`Начало:` **" + subject.getStartTime()
-					+ "**\n`Край:` **" + subject.getEndTime() + "**\n`Следващ час:` **" + subject.getNextTime() + "**",
-					true);
-
-			eb.setFooter("Изпратено на @2ра група");
-
-			eb.setColor(Color.RED);
-			eb.setThumbnail(imgPNG);
-
-			event.getChannel().sendMessage(group2).queue();
-			event.getChannel().sendMessage(eb.build()).queue();
+				messageBase(group2);
 		}
 	}
 
+	@Override
+	public void run() {
+		getCurrentClass();
+	}
 }

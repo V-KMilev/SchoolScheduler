@@ -2,15 +2,15 @@ package com.appnull.commands.notifications.subjects;
 
 import com.appnull.commands.notifications.base.SubjectName;
 
-public class UPCv1 implements SubjectName {
+public class UPKM2 implements SubjectName {
 
 	@Override
 	public String getName() {
-		return "Учебна практика цифрова схемотехника (УП-схем.) ПРАКТИКА, гр.1";
+		return "Компютърни мрежи (УП КМ) ПРАКТИКА, гр.2";
 	}
 
 	@Override
 	public String getCode() {
-		return "4vtm2fj";
+		return "[NULL]";
 	}
 }

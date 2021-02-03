@@ -2,15 +2,15 @@ package com.appnull.commands.notifications.subjects;
 
 import com.appnull.commands.notifications.base.SubjectName;
 
-public class GO implements SubjectName {
+public class UPZPU1 implements SubjectName {
 
 	@Override
 	public String getName() {
-		return "Гражданско образование (ГО)";
+		return "Запаметяващи и периферни устройства (ЗПУ) ПРАКТИКА, гр.1";
 	}
 
 	@Override
 	public String getCode() {
-		return "5doin5h";
+		return "ky2j7rs";
 	}
 }

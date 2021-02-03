@@ -3,6 +3,7 @@ package com.appnull.commands;
 import java.awt.Color;
 
 import java.io.IOException;
+
 import java.util.Map;
 import java.util.List;
 import java.util.Date;
@@ -22,44 +23,50 @@ import org.apache.commons.collections4.map.HashedMap;
 import com.appnull.commands.notifications.Notify;
 import com.appnull.commands.notifications.base.Subject;
 import com.appnull.commands.notifications.base.SubjectImpl;
-import com.appnull.commands.notifications.subjects.CS;
+
 import com.appnull.commands.notifications.subjects.GO;
 import com.appnull.commands.notifications.subjects.KA;
-import com.appnull.commands.notifications.subjects.KM;
 import com.appnull.commands.notifications.subjects.NE;
-import com.appnull.commands.notifications.subjects.OS;
 import com.appnull.commands.notifications.subjects.SD;
+import com.appnull.commands.notifications.subjects.BK;
+import com.appnull.commands.notifications.subjects.MAT;
 import com.appnull.commands.notifications.subjects.BEL;
 import com.appnull.commands.notifications.subjects.FVS;
-import com.appnull.commands.notifications.subjects.Mat;
 import com.appnull.commands.notifications.subjects.ZPU;
 import com.appnull.commands.notifications.subjects.ChEP;
 import com.appnull.commands.notifications.subjects.ChKR;
-import com.appnull.commands.notifications.subjects.KAPv1;
-import com.appnull.commands.notifications.subjects.KAPv2;
-import com.appnull.commands.notifications.subjects.OSPv1;
-import com.appnull.commands.notifications.subjects.OSPv2;
-import com.appnull.commands.notifications.subjects.UPCv1;
-import com.appnull.commands.notifications.subjects.UPCv2;
-import com.appnull.commands.notifications.subjects.UPZPUv1;
-import com.appnull.commands.notifications.subjects.UPZPUv2;
+import com.appnull.commands.notifications.subjects.PROG;
+import com.appnull.commands.notifications.subjects.UPKA1;
+import com.appnull.commands.notifications.subjects.UPKA2;
+import com.appnull.commands.notifications.subjects.UPKM1;
+import com.appnull.commands.notifications.subjects.UPKM2;
+import com.appnull.commands.notifications.subjects.UPOS1;
+import com.appnull.commands.notifications.subjects.UPOS2;
+import com.appnull.commands.notifications.subjects.UPUMk1;
+import com.appnull.commands.notifications.subjects.UPUMk2;
+import com.appnull.commands.notifications.subjects.UPZPU1;
+import com.appnull.commands.notifications.subjects.UPZPU2;
+//import com.appnull.commands.notifications.subjects.OS;
+//import com.appnull.commands.notifications.subjects.KM;
+//import com.appnull.commands.notifications.subjects.CS;
 
 import com.appnull.commands.notifications.subjects.locations.TeamsLocation;
 import com.appnull.commands.notifications.subjects.locations.ClassroomLocation;
+//import com.appnull.commands.notifications.subjects.locations.NoLocation;
 //import com.appnull.commands.notifications.subjects.locations.ShkoloLocation;
 //import com.appnull.commands.notifications.subjects.locations.DiscordLocation;
 
-import com.appnull.commands.notifications.subjects.locations.NoLocation;
 import com.appnull.commands.notifications.subjects.times.FirstSubject;
 import com.appnull.commands.notifications.subjects.times.SecondSubject;
 import com.appnull.commands.notifications.subjects.times.ThirthSubject;
-import com.appnull.commands.permissions.RoleMannager;
 import com.appnull.commands.notifications.subjects.times.FourthSubject;
 import com.appnull.commands.notifications.subjects.times.FifthSubject;
 import com.appnull.commands.notifications.subjects.times.SixthSubject;
 import com.appnull.commands.notifications.subjects.times.SeventhSubject;
 import com.appnull.commands.notifications.subjects.times.EighthSubject;
 //import com.appnull.commands.notifications.subjects.times.NinthSubject;
+
+import com.appnull.commands.permissions.RoleMannager;
 
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.Member;
@@ -81,7 +88,7 @@ public class ScheduleNotofications extends ListenerAdapter {
 	public ScheduleNotofications() throws ParseException {
 
 		this.formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
-		this.endDate = LocalDate.parse("31/01/2021 23:59:59", formatter);
+		this.endDate = LocalDate.parse("30/06/2021 23:59:59", formatter);
 		this.schoolSchedule = new HashedMap<Integer, List<Subject>>();
 		this.calendar = Calendar.getInstance();
 		this.timer = new Timer();
@@ -94,58 +101,59 @@ public class ScheduleNotofications extends ListenerAdapter {
 		ArrayList<Subject> friday = new ArrayList<Subject>();
 
 		schoolSchedule.put(2, mondays);
-		mondays.add(new SubjectImpl(new FirstSubject(), new NoLocation(), new SD()));
-		mondays.add(new SubjectImpl(new SecondSubject(), new TeamsLocation(), new KAPv1()));
-		mondays.add(new SubjectImpl(new SecondSubject(), new TeamsLocation(), new KAPv2()));
-		mondays.add(new SubjectImpl(new ThirthSubject(), new TeamsLocation(), new KAPv1()));
-		mondays.add(new SubjectImpl(new ThirthSubject(), new TeamsLocation(), new KAPv2()));
-		mondays.add(new SubjectImpl(new FourthSubject(), new TeamsLocation(), new OSPv1()));
-		mondays.add(new SubjectImpl(new FourthSubject(), new TeamsLocation(), new OSPv2()));
-		mondays.add(new SubjectImpl(new FifthSubject(), new TeamsLocation(), new OSPv1()));
-		mondays.add(new SubjectImpl(new FifthSubject(), new TeamsLocation(), new OSPv2()));
-		mondays.add(new SubjectImpl(new SixthSubject(), new TeamsLocation(), new UPCv1()));
-		mondays.add(new SubjectImpl(new SixthSubject(), new TeamsLocation(), new UPCv2()));
-		mondays.add(new SubjectImpl(new SeventhSubject(), new TeamsLocation(), new UPCv1()));
-		mondays.add(new SubjectImpl(new SeventhSubject(), new TeamsLocation(), new UPCv2()));
+		mondays.add(new SubjectImpl(new ThirthSubject(), new TeamsLocation(), new GO()));
+		mondays.add(new SubjectImpl(new FourthSubject(), new ClassroomLocation(), new BEL()));
+		mondays.add(new SubjectImpl(new FifthSubject(), new TeamsLocation(), new ZPU()));
+		mondays.add(new SubjectImpl(new SixthSubject(), new TeamsLocation(), new ZPU()));
+		mondays.add(new SubjectImpl(new SeventhSubject(), new TeamsLocation(), new UPKM1()));
+		mondays.add(new SubjectImpl(new SeventhSubject(), new TeamsLocation(), new UPKM2()));
+		mondays.add(new SubjectImpl(new EighthSubject(), new TeamsLocation(), new UPKM1()));
+		mondays.add(new SubjectImpl(new EighthSubject(), new TeamsLocation(), new UPKM2()));
 
 		schoolSchedule.put(3, tuesday);
-		tuesday.add(new SubjectImpl(new SecondSubject(), new ClassroomLocation(), new BEL()));
-		tuesday.add(new SubjectImpl(new ThirthSubject(), new TeamsLocation(), new KA()));
-		tuesday.add(new SubjectImpl(new FourthSubject(), new TeamsLocation(), new KA()));
-		tuesday.add(new SubjectImpl(new FifthSubject(), new TeamsLocation(), new CS()));
-		tuesday.add(new SubjectImpl(new SixthSubject(), new TeamsLocation(), new CS()));
-		tuesday.add(new SubjectImpl(new SeventhSubject(), new TeamsLocation(), new ChEP()));
-		tuesday.add(new SubjectImpl(new EighthSubject(), new TeamsLocation(), new ChEP()));
+		tuesday.add(new SubjectImpl(new FirstSubject(), new TeamsLocation(), new BK()));
+		tuesday.add(new SubjectImpl(new SecondSubject(), new TeamsLocation(), new BK()));
+		tuesday.add(new SubjectImpl(new ThirthSubject(), new TeamsLocation(), new UPUMk1()));
+		tuesday.add(new SubjectImpl(new ThirthSubject(), new TeamsLocation(), new UPUMk2()));
+		tuesday.add(new SubjectImpl(new FourthSubject(), new TeamsLocation(), new UPUMk1()));
+		tuesday.add(new SubjectImpl(new FourthSubject(), new TeamsLocation(), new UPUMk2()));
+		tuesday.add(new SubjectImpl(new FifthSubject(), new TeamsLocation(), new UPOS1()));
+		tuesday.add(new SubjectImpl(new FifthSubject(), new TeamsLocation(), new UPOS2()));
+		tuesday.add(new SubjectImpl(new SixthSubject(), new TeamsLocation(), new UPOS1()));
+		tuesday.add(new SubjectImpl(new SixthSubject(), new TeamsLocation(), new UPOS2()));
+		tuesday.add(new SubjectImpl(new SeventhSubject(), new TeamsLocation(), new NE()));
+		tuesday.add(new SubjectImpl(new EighthSubject(), new TeamsLocation(), new NE()));
 
 		schoolSchedule.put(4, thirsday);
-		thirsday.add(new SubjectImpl(new SecondSubject(), new TeamsLocation(), new ChKR()));
-		thirsday.add(new SubjectImpl(new ThirthSubject(), new NoLocation(), new FVS()));
-		thirsday.add(new SubjectImpl(new FourthSubject(), new NoLocation(), new FVS()));
-		thirsday.add(new SubjectImpl(new FifthSubject(), new TeamsLocation(), new UPZPUv1()));
-		thirsday.add(new SubjectImpl(new FifthSubject(), new TeamsLocation(), new UPZPUv2()));
-		thirsday.add(new SubjectImpl(new SixthSubject(), new TeamsLocation(), new UPZPUv1()));
-		thirsday.add(new SubjectImpl(new SixthSubject(), new TeamsLocation(), new UPZPUv2()));
-		thirsday.add(new SubjectImpl(new SeventhSubject(), new TeamsLocation(), new KAPv1()));
-		thirsday.add(new SubjectImpl(new SeventhSubject(), new TeamsLocation(), new KAPv2()));
-		thirsday.add(new SubjectImpl(new EighthSubject(), new TeamsLocation(), new KAPv1()));
-		thirsday.add(new SubjectImpl(new EighthSubject(), new TeamsLocation(), new KAPv2()));
+		thirsday.add(new SubjectImpl(new FirstSubject(), new TeamsLocation(), new UPKA1()));
+		thirsday.add(new SubjectImpl(new FirstSubject(), new TeamsLocation(), new UPKA2()));
+		thirsday.add(new SubjectImpl(new SecondSubject(), new TeamsLocation(), new UPKA1()));
+		thirsday.add(new SubjectImpl(new SecondSubject(), new TeamsLocation(), new UPKA2()));
+		thirsday.add(new SubjectImpl(new ThirthSubject(), new ClassroomLocation(), new BEL()));
+		thirsday.add(new SubjectImpl(new FourthSubject(), new ClassroomLocation(), new BEL()));
+		thirsday.add(new SubjectImpl(new FifthSubject(), new TeamsLocation(), new UPZPU1()));
+		thirsday.add(new SubjectImpl(new FifthSubject(), new TeamsLocation(), new UPZPU2()));
+		thirsday.add(new SubjectImpl(new SixthSubject(), new TeamsLocation(), new UPZPU1()));
+		thirsday.add(new SubjectImpl(new SixthSubject(), new TeamsLocation(), new UPZPU2()));
+		thirsday.add(new SubjectImpl(new SeventhSubject(), new TeamsLocation(), new ChKR()));
+		thirsday.add(new SubjectImpl(new EighthSubject(), new TeamsLocation(), new SD()));
 
 		schoolSchedule.put(5, wendesday);
-		wendesday.add(new SubjectImpl(new FirstSubject(), new TeamsLocation(), new KM()));
-		wendesday.add(new SubjectImpl(new SecondSubject(), new TeamsLocation(), new KM()));
-		wendesday.add(new SubjectImpl(new ThirthSubject(), new TeamsLocation(), new Mat()));
-		wendesday.add(new SubjectImpl(new FourthSubject(), new TeamsLocation(), new Mat()));
-		wendesday.add(new SubjectImpl(new SixthSubject(), new TeamsLocation(), new NE()));
-		wendesday.add(new SubjectImpl(new SeventhSubject(), new TeamsLocation(), new NE()));
-		wendesday.add(new SubjectImpl(new EighthSubject(), new TeamsLocation(), new GO()));
+		wendesday.add(new SubjectImpl(new SecondSubject(), new TeamsLocation(), new MAT()));
+		wendesday.add(new SubjectImpl(new ThirthSubject(), new TeamsLocation(), new MAT()));
+		wendesday.add(new SubjectImpl(new FourthSubject(), new TeamsLocation(), new PROG()));
+		wendesday.add(new SubjectImpl(new FifthSubject(), new TeamsLocation(), new PROG()));
+		wendesday.add(new SubjectImpl(new SixthSubject(), new TeamsLocation(), new FVS()));
+		wendesday.add(new SubjectImpl(new SeventhSubject(), new TeamsLocation(), new FVS()));
 
 		schoolSchedule.put(6, friday);
-		friday.add(new SubjectImpl(new FirstSubject(), new ClassroomLocation(), new BEL()));
-		friday.add(new SubjectImpl(new SecondSubject(), new ClassroomLocation(), new BEL()));
-		friday.add(new SubjectImpl(new ThirthSubject(), new TeamsLocation(), new OS()));
-		friday.add(new SubjectImpl(new FourthSubject(), new TeamsLocation(), new OS()));
-		friday.add(new SubjectImpl(new FifthSubject(), new TeamsLocation(), new ZPU()));
-		friday.add(new SubjectImpl(new SixthSubject(), new TeamsLocation(), new ZPU()));
+		friday.add(new SubjectImpl(new ThirthSubject(), new TeamsLocation(), new UPKA1()));
+		friday.add(new SubjectImpl(new ThirthSubject(), new TeamsLocation(), new UPKA2()));
+		friday.add(new SubjectImpl(new FourthSubject(), new TeamsLocation(), new UPKA1()));
+		friday.add(new SubjectImpl(new FourthSubject(), new TeamsLocation(), new UPKA2()));
+		friday.add(new SubjectImpl(new FifthSubject(), new TeamsLocation(), new KA()));
+		friday.add(new SubjectImpl(new SixthSubject(), new TeamsLocation(), new KA()));
+		friday.add(new SubjectImpl(new SeventhSubject(), new TeamsLocation(), new ChEP()));
 
 	}
 
@@ -246,11 +254,16 @@ public class ScheduleNotofications extends ListenerAdapter {
 				eb.addField("> **со-ня ЦП.1**", "**йнд: ||8oumx66||**", true);
 				eb.addField("> **со-ня ЦП.2**", "**йнд: ||6sgsil2||**", true);
 				eb.addField("> **йл**", "**йнд: ||gyix9kd||**", true);
+				eb.addField("> **со-йл**", "**йнд: ||gyix9kd||**", true);
+				eb.addField("> **со-йл**", "**йнд: ||[NULL]||**", true);
+				eb.addField("> **со-слЙ**", "**йнд: ||[NULL]||**", true);
+				eb.addField("> **со-слЙ**", "**йнд: ||[NULL]||**", true);
+				eb.addField("> **оПНЦП**", "**йнд: ||[NULL]||**", true);
 				eb.addField("> **люр**", "**йнд: ||fcs8b64||**", true);
 				eb.addField("> **вео**", "**йнд: ||vva8xiv||**", true);
 				eb.addField("> **аек**", "**йнд: ||b2x1o8k||**", true);
 				eb.addField("> **ме**", "**йнд: ||r3g6lg3||**", true);
-				eb.addField("> **цн**", "**йнд: ||pkiaoay||**", true);
+				eb.addField("> **цн**", "**йнд: ||5doin5h||**", true);
 				eb.addField("> **яд**", "**йнд: ||mcsehdp||**", true);
 				eb.addField("> **тбя**", "**йнд: ||mcsehdp||**", true);
 				eb.setFooter("! For more help CurrentlyNull#3126 or vilimir.k.milev@gmail.com");

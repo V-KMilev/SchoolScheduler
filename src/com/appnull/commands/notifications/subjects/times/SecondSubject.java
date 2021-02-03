@@ -9,17 +9,17 @@ public class SecondSubject implements SubjectTime {
 	@Override
 	public LocalTime getStartTime() {
 
-		return LocalTime.parse("08:50");
+		return LocalTime.parse("13:20");
 	}
 
 	@Override
 	public String getEndTime() {
-		return "09:30";
+		return "14:00";
 	}
 
 	@Override
 	public String getNextTime() {
-		return "09:40";
+		return "14:10";
 	}
 
 	@Override

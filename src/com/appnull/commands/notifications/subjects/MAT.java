@@ -2,15 +2,15 @@ package com.appnull.commands.notifications.subjects;
 
 import com.appnull.commands.notifications.base.SubjectName;
 
-public class OSPv2 implements SubjectName {
+public class MAT implements SubjectName {
 
 	@Override
 	public String getName() {
-		return "Операционни системи (ОС) ПРАКТИКА, гр.2";
+		return "Математика";
 	}
 
 	@Override
 	public String getCode() {
-		return "8oumx66";
+		return "fcs8b64";
 	}
 }
