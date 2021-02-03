@@ -1,4 +1,4 @@
-package com.appnull.botnull;
+package com.appnull.botbase;
 
 import com.appnull.commands.ScheduleNotofications;
 
