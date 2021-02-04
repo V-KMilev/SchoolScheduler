@@ -6,7 +6,7 @@ public class BK implements SubjectName {
 
 	@Override
 	public String getName() {
-		return " Бизнес комуникации (БК)";
+		return "Бизнес комуникации (БК)";
 	}
 
 	@Override

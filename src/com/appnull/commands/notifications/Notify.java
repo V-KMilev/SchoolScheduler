@@ -21,7 +21,7 @@ public class Notify extends TimerTask {
 
 	public void messageBase(String mantion) {
 
-		String imgPNG = "https://cdn.discordapp.com/attachments/528269500269723658/772904455548305428/programa_11d.PNG";
+		String imgPNG = "https://cdn.discordapp.com/attachments/718871472336273429/806569636169515052/11.png";
 
 		EmbedBuilder eb = new EmbedBuilder();
 
@@ -49,13 +49,13 @@ public class Notify extends TimerTask {
 
 		for (int i = 0; i < subject.getName().length(); i++) {
 			if (subject.getName().indexOf('1') != -1)
-				messageBase(classD11);
-
-			else if (subject.getName().indexOf('2') != -1)
 				messageBase(group1);
 
-			else
+			else if (subject.getName().indexOf('2') != -1)
 				messageBase(group2);
+
+			else
+				messageBase(classD11);
 		}
 	}
 

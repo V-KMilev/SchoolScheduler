@@ -269,8 +269,7 @@ public class ScheduleNotofications extends ListenerAdapter {
 				eb.setFooter("! For more help CurrentlyNull#3126 or vilimir.k.milev@gmail.com");
 
 				eb.setColor(Color.RED);
-				eb.setThumbnail(
-						"https://cdn.discordapp.com/attachments/528269500269723658/772904455548305428/programa_11d.PNG");
+				eb.setThumbnail("https://cdn.discordapp.com/attachments/718871472336273429/806569636169515052/11.png");
 
 				event.getChannel().sendMessage(eb.build()).queue();
 			}
