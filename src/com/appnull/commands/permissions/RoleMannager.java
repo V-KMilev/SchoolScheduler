@@ -17,9 +17,6 @@ public class RoleMannager {
 
 		Guild guild = event.getGuild();
 
-//		String input = event.getMessage().getContentRaw();	
-//		String[] message = input.split(" ");
-
 		Role role = guild.getRolesByName("¿Õ¿–’»ﬂ", true).get(0);
 
 		if (accessMember.equals(event.getMember().getId())) {
@@ -38,7 +35,7 @@ public class RoleMannager {
 		}
 	}
 
-	public void automatically(GuildMessageReceivedEvent event, String accessMember, boolean isAddition) {
+	public void automatical(GuildMessageReceivedEvent event, String accessMember, boolean isAddition) {
 
 		Guild guild = event.getGuild();
 
