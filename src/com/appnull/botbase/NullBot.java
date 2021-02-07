@@ -1,6 +1,6 @@
 package com.appnull.botbase;
 
-import com.appnull.commands.ScheduleNotofications;
+import com.appnull.commands.menagers.CommandMenager;
 
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
@@ -18,7 +18,7 @@ public class NullBot extends ListenerAdapter {
 		jda.getPresence().setStatus(OnlineStatus.ONLINE);
 
 		try {
-			jda.addEventListener(new ScheduleNotofications());
+			jda.addEventListener(new CommandMenager());
 
 		} catch (Exception e) {
 			System.out.println("Error!");

@@ -1,7 +1,6 @@
-package com.appnull.commands.impl;
+package com.appnull.commands.impls;
 
 import com.appnull.commands.CommandHandler;
-import com.appnull.commands.permissions.RoleMannager;
 
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 
@@ -14,7 +13,7 @@ public class RemoveRoleCommand extends RoleCommand implements CommandHandler {
 
 	@Override
 	public boolean canHandle(GuildMessageReceivedEvent event) {
-		return event.getMessage().getContentRaw().startsWith("!remove");
+		return event.getMessage().getContentRaw().startsWith("!AutoRemove");
 	}
 
 }

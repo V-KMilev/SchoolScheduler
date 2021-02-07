@@ -1,12 +1,10 @@
-package com.appnull.commands.impl;
+package com.appnull.commands.impls;
 
 import java.awt.Color;
 
 import com.appnull.commands.CommandHandler;
-import com.appnull.commands.permissions.RoleMannager;
 
 import net.dv8tion.jda.api.EmbedBuilder;
-import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 
 public class HelpssCommand implements CommandHandler {
@@ -32,28 +30,7 @@ public class HelpssCommand implements CommandHandler {
 
 	@Override
 	public boolean canHandle(GuildMessageReceivedEvent event) {
-		return event.getMessage().getContentRaw().startsWith("!helpss") && hasMessageRights(event);
-	}
-
-	private boolean hasMessageRights(GuildMessageReceivedEvent event) {
-		String message = event.getMessage().getContentRaw();
-
-		Member currentMember = event.getMember();
-		Member bot = event.getGuild().getMemberById("710038411586699335");
-
-		if (message.contentEquals("!helpss") || message.contentEquals("!getcodes") || message.contentEquals("!kys")
-				|| message.contentEquals("!KYS") || message.contentEquals("!schedule")
-				|| message.contentEquals("!getschedule") || message.contentEquals("!report") || message.contains("!add")
-				|| message.contains("!remove") || message.contains("!Allah") || message.contains("!NoAllah")
-				|| currentMember.equals(bot)) {
-
-			return true;
-
-		} else {
-			return false;
-
-			;
-		}
+		return event.getMessage().getContentRaw().startsWith("!helpss");
 	}
 
 }

@@ -1,20 +1,19 @@
-package com.appnull.commands.impl;
+package com.appnull.commands.impls;
 
 import com.appnull.commands.CommandHandler;
-import com.appnull.commands.permissions.RoleMannager;
 
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 
-public class AddRoleCommand extends RoleCommand implements CommandHandler{
+public class KysCommand implements CommandHandler {
 
 	@Override
 	public void handle(GuildMessageReceivedEvent event, String userId) {
-		roleMannager.handed(event, userId, true);
+		event.getChannel().sendMessage("NO! KYS " + event.getMember().getAsMention()).queue();
 	}
 
 	@Override
 	public boolean canHandle(GuildMessageReceivedEvent event) {
-		return event.getMessage().getContentRaw().startsWith("!add");
+		return event.getMessage().getContentRaw().startsWith("!kys");
 	}
 
 }

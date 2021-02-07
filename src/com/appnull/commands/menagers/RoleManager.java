@@ -1,4 +1,4 @@
-package com.appnull.commands.permissions;
+package com.appnull.commands.menagers;
 
 import java.util.List;
 
@@ -7,9 +7,9 @@ import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.entities.Role;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 
-public class RoleMannager {
+public class RoleManager {
 
-	public RoleMannager() {
+	public RoleManager() {
 
 	}
 
