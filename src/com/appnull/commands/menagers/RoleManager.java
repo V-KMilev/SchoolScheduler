@@ -13,21 +13,30 @@ public class RoleManager {
 
 	}
 
-	public void handed(GuildMessageReceivedEvent event, String accessMember, boolean isAddition) {
+	public void handed(GuildMessageReceivedEvent event, String accessMember, String roleName, boolean isAddition) {
 
 		Guild guild = event.getGuild();
+		List<Member> members;
+		Role role = null;
 
-		Role role = guild.getRolesByName("¿Õ¿–’»ﬂ", true).get(0);
+		for (Role currentRole : guild.getRoles()) {
+
+			if (roleName.equals(currentRole.getName()))
+				role = guild.getRolesByName(roleName, true).get(0);
+		}
 
 		if (accessMember.equals(event.getMember().getId())) {
 
-			List<Member> mentionedMembers = event.getMessage().getMentionedMembers();
+			members = event.getMessage().getMentionedMembers();
 
-			for (Member currentMember : mentionedMembers) {
+			for (Member currentMember : members) {
+
 				if (isAddition) {
+
 					guild.addRoleToMember(currentMember, role).queue();
 					System.out.println("Added: " + currentMember);
 				} else {
+
 					guild.removeRoleFromMember(currentMember, role).queue();
 					System.out.println("Removed: " + currentMember);
 				}
@@ -35,22 +44,28 @@ public class RoleManager {
 		}
 	}
 
-	public void automatical(GuildMessageReceivedEvent event, String accessMember, boolean isAddition) {
+	public void automatical(GuildMessageReceivedEvent event, String accessMember, String roleName, boolean isAddition) {
 
 		Guild guild = event.getGuild();
-
 		List<Member> members = guild.getMembers();
+		Role role = null;
 
-		Role role = guild.getRolesByName("tester", true).get(0);
+		for (Role currentRole : guild.getRoles()) {
+
+			if (roleName.equals(currentRole.getName()))
+				role = guild.getRolesByName(roleName, true).get(0);
+		}
 
 		if (accessMember.equals(event.getMember().getId())) {
 
 			for (Member postitionMember : members) {
 
 				if (isAddition) {
+
 					guild.addRoleToMember(postitionMember, role).queue();
 					System.out.println("Added: " + postitionMember);
 				} else {
+
 					guild.removeRoleFromMember(postitionMember, role).queue();
 					System.out.println("Removed: " + postitionMember);
 				}

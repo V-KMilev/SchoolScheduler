@@ -1,34 +1,40 @@
 package com.appnull.commands.schedule;
 
 import java.io.IOException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+
+import java.util.Map;
+import java.util.Date;
+import java.util.List;
+import java.util.Timer;
+import java.util.Calendar;
+import java.util.ArrayList;
+
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
-import java.util.Timer;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 import org.apache.commons.collections4.map.HashedMap;
 
 import com.appnull.commands.notifications.Notify;
+
 import com.appnull.commands.notifications.base.Subject;
 import com.appnull.commands.notifications.base.SubjectImpl;
-import com.appnull.commands.notifications.subjects.BEL;
+
 import com.appnull.commands.notifications.subjects.BK;
-import com.appnull.commands.notifications.subjects.ChEP;
-import com.appnull.commands.notifications.subjects.ChKR;
-import com.appnull.commands.notifications.subjects.FVS;
 import com.appnull.commands.notifications.subjects.GO;
 import com.appnull.commands.notifications.subjects.KA;
-import com.appnull.commands.notifications.subjects.MAT;
 import com.appnull.commands.notifications.subjects.NE;
-import com.appnull.commands.notifications.subjects.PROG;
 import com.appnull.commands.notifications.subjects.SD;
+import com.appnull.commands.notifications.subjects.BEL;
+import com.appnull.commands.notifications.subjects.MAT;
+import com.appnull.commands.notifications.subjects.FVS;
+import com.appnull.commands.notifications.subjects.ZPU;
+import com.appnull.commands.notifications.subjects.ChEP;
+import com.appnull.commands.notifications.subjects.ChKR;
+import com.appnull.commands.notifications.subjects.PROG;
 import com.appnull.commands.notifications.subjects.UPKA1;
 import com.appnull.commands.notifications.subjects.UPKA2;
 import com.appnull.commands.notifications.subjects.UPKM1;
@@ -39,23 +45,26 @@ import com.appnull.commands.notifications.subjects.UPUMk1;
 import com.appnull.commands.notifications.subjects.UPUMk2;
 import com.appnull.commands.notifications.subjects.UPZPU1;
 import com.appnull.commands.notifications.subjects.UPZPU2;
-import com.appnull.commands.notifications.subjects.ZPU;
-import com.appnull.commands.notifications.subjects.locations.ClassroomLocation;
+
+//import com.appnull.commands.notifications.subjects.locations.NoLocation;
 import com.appnull.commands.notifications.subjects.locations.TeamsLocation;
-import com.appnull.commands.notifications.subjects.times.EighthSubject;
-import com.appnull.commands.notifications.subjects.times.FifthSubject;
+import com.appnull.commands.notifications.subjects.locations.ClassroomLocation;
+
 import com.appnull.commands.notifications.subjects.times.FirstSubject;
-import com.appnull.commands.notifications.subjects.times.FourthSubject;
 import com.appnull.commands.notifications.subjects.times.SecondSubject;
-import com.appnull.commands.notifications.subjects.times.SeventhSubject;
-import com.appnull.commands.notifications.subjects.times.SixthSubject;
 import com.appnull.commands.notifications.subjects.times.ThirthSubject;
+import com.appnull.commands.notifications.subjects.times.FourthSubject;
+import com.appnull.commands.notifications.subjects.times.FifthSubject;
+import com.appnull.commands.notifications.subjects.times.SixthSubject;
+import com.appnull.commands.notifications.subjects.times.SeventhSubject;
+import com.appnull.commands.notifications.subjects.times.EighthSubject;
 
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 
 public class Schedule {
 
 	private final List<String> scheduledTasksLog = new ArrayList<String>();
+
 	private final Map<Integer, List<Subject>> schoolSchedule;
 	private final DateTimeFormatter formatter;
 	private final LocalDate endDate;
@@ -136,25 +145,24 @@ public class Schedule {
 
 	public LocalDate getEndDate() {
 		return endDate;
-
 	}
 
 	public List<String> getScheduledTasksLog() {
 		return scheduledTasksLog;
-
 	}
 
 	public void scheduleTasks(GuildMessageReceivedEvent event) throws ParseException, IOException {
+
 		System.out.println("CraftCN " + "Server: " + event.getGuild() + " End-Date: " + getEndDate() + " Scheduler: "
 				+ event.getMember().getUser());
 
-		SimpleDateFormat dateFormater = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+		SimpleDateFormat dateFormater = new SimpleDateFormat("YYYY-MM-dd HH:mm");
 		LocalDate startDate = LocalDate.now();
 
 		for (LocalDate date = startDate; date.isBefore(getEndDate()); date = date.plusDays(1)) {
-			if (LocalTime.now().getHour() > 12 && LocalDate.now().isEqual(date)) {
+
+			if (LocalTime.now().getHour() > 12 && LocalDate.now().isEqual(date))
 				continue;
-			}
 
 			java.sql.Date calendarDate = java.sql.Date.valueOf(date);
 			calendar.setTime(calendarDate);
@@ -162,6 +170,7 @@ public class Schedule {
 			int weekday = calendar.get(Calendar.DAY_OF_WEEK);
 
 			if (schoolSchedule.containsKey(weekday)) {
+
 				List<Subject> subjects = schoolSchedule.get(weekday);
 
 				for (int i = 0; i < subjects.size(); i++) {
@@ -176,30 +185,20 @@ public class Schedule {
 					int min = 987654321;
 					int accessToken = (int) (Math.random() * (max - min + 1) + min);
 
-					String loc = "";
-
-					if (subject.getLocation() == "Teams") {
-						loc = subject.getLocation();
-					} else if (subject.getLocation() == "Classroom") {
-						loc = subject.getLocation();
-					} else {
-						loc = "NULL";
-					}
-
 					String logMessageSOUT = "CraftCN " + accessToken + "-accessToken " + "Scheduled task for: "
 							+ scheduledTime + " Subject: " + subject.getName() + " [" + subject.getPosition() + "] - "
-							+ loc + " " + subject.getCode();
+							+ subject.getLocation() + " " + subject.getCode();
 
 					String logMessageJDA = "**CraftCN** ||" + accessToken + "-accessToken|| "
 							+ "**Scheduled task for:** `" + scheduledTime + "` **Subject:** `" + subject.getName()
-							+ "` **# " + subject.getPosition() + " | `" + loc + "` ||" + subject.getCode() + "||**";
-
-					System.out.println(logMessageSOUT);
+							+ "` **# " + subject.getPosition() + " | `" + subject.getLocation() + "` ||"
+							+ subject.getCode() + "||**";
 
 					this.getScheduledTasksLog().add(logMessageJDA);
 
 					timer.schedule(new Notify(event, subject), scheduledTime);
 
+					System.out.println(logMessageSOUT);
 				}
 			}
 		}

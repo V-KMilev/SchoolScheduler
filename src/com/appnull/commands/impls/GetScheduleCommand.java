@@ -6,16 +6,15 @@ import com.appnull.commands.schedule.Schedule;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 
 public class GetScheduleCommand extends HasAccess implements CommandHandler {
-	
+
 	Schedule schedule;
-	
+
 	public GetScheduleCommand(Schedule schedule) {
 		this.schedule = schedule;
 	}
 
 	@Override
 	public void handle(GuildMessageReceivedEvent event, String userId) {
-
 
 		event.getChannel()
 				.sendMessage("**CraftCN | " + "Server: `" + event.getGuild().getName() + "` End-Date: `"

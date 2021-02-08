@@ -22,6 +22,7 @@ public class NullBot extends ListenerAdapter {
 
 		} catch (Exception e) {
 			System.out.println("Error!");
+
 		}
 
 	}

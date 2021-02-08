@@ -8,7 +8,7 @@ public class AddRoleCommand extends RoleCommand implements CommandHandler {
 
 	@Override
 	public void handle(GuildMessageReceivedEvent event, String userId) {
-		roleMannager.handed(event, userId, true);
+		roleMannager.handed(event, userId, role, true);
 	}
 
 	@Override

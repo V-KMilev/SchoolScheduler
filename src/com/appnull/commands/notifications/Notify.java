@@ -15,6 +15,7 @@ public class Notify extends TimerTask {
 	private Subject subject;
 
 	public Notify(GuildMessageReceivedEvent event, Subject subject) {
+
 		this.event = event;
 		this.subject = subject;
 	}
@@ -41,13 +42,14 @@ public class Notify extends TimerTask {
 		event.getChannel().sendMessage(eb.build()).queue();
 	}
 
-	public void getCurrentClass() {
+	public void getCurrentSubject() {
 
 		String classD11 = "<@&507287205698600961>";
 		String group1 = "<@&711826223742844931>";
 		String group2 = "<@&711826277790777424>";
 
 		for (int i = 0; i < subject.getName().length(); i++) {
+
 			if (subject.getName().indexOf('1') != -1)
 				messageBase(group1);
 
@@ -61,6 +63,6 @@ public class Notify extends TimerTask {
 
 	@Override
 	public void run() {
-		getCurrentClass();
+		getCurrentSubject();
 	}
 }

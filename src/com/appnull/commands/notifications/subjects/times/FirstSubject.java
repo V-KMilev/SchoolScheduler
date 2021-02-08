@@ -2,9 +2,12 @@ package com.appnull.commands.notifications.subjects.times;
 
 import java.time.LocalTime;
 
-import com.appnull.commands.notifications.base.SubjectTime;
+import com.appnull.commands.notifications.base.SubjectEndTime;
+import com.appnull.commands.notifications.base.SubjectNextTime;
+import com.appnull.commands.notifications.base.SubjectPosition;
+import com.appnull.commands.notifications.base.SubjectStartTime;
 
-public class FirstSubject implements SubjectTime {
+public class FirstSubject implements SubjectStartTime, SubjectEndTime, SubjectNextTime, SubjectPosition {
 
 	@Override
 	public LocalTime getStartTime() {

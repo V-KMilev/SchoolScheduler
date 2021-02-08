@@ -4,34 +4,30 @@ import java.time.LocalTime;
 
 public class SubjectImpl implements Subject {
 
-	private SubjectTime subjectTime;
+	private SubjectStartTime subjectStartTime;
 	private SubjectLocation subjectLocation;
 	private SubjectName subjectName;
 
-	private SubjectName subjectCode;
-	private SubjectTime subjectPosition;
-	private SubjectTime subjectEndTime;
-	private SubjectTime subjectNextTime;
+	private SubjectEndTime subjectEndTime;
+	private SubjectNextTime subjectNextTime;
+	private SubjectPosition subjectPosition;
+	private SubjectCode subjectCode;
 
-	public SubjectImpl(SubjectTime time, SubjectLocation location, SubjectName name) {
+	public SubjectImpl(SubjectStartTime startTime, SubjectLocation location, SubjectName name) {
+
 		this.subjectName = name;
 		this.subjectLocation = location;
-		this.subjectTime = time;
+		this.subjectStartTime = startTime;
 
-		this.subjectCode = name;
-		this.subjectPosition = time;
-		this.subjectEndTime = time;
-		this.subjectNextTime = time;
+		this.subjectEndTime = (SubjectEndTime) startTime;
+		this.subjectNextTime = (SubjectNextTime) startTime;
+		this.subjectPosition = (SubjectPosition) startTime;
+		this.subjectCode = (SubjectCode) name;
 	}
 
 	@Override
 	public LocalTime getStartTime() {
-		return subjectTime.getStartTime();
-	}
-
-	@Override
-	public String getName() {
-		return subjectName.getName();
+		return subjectStartTime.getStartTime();
 	}
 
 	@Override
@@ -40,8 +36,8 @@ public class SubjectImpl implements Subject {
 	}
 
 	@Override
-	public String getPosition() {
-		return subjectPosition.getPosition();
+	public String getName() {
+		return subjectName.getName();
 	}
 
 	@Override
@@ -50,12 +46,18 @@ public class SubjectImpl implements Subject {
 	}
 
 	@Override
+	public String getNextTime() {
+		return subjectNextTime.getNextTime();
+	}
+
+	@Override
+	public String getPosition() {
+		return subjectPosition.getPosition();
+	}
+
+	@Override
 	public String getCode() {
 		return subjectCode.getCode();
 	}
 
-	@Override
-	public String getNextTime() {
-		return subjectNextTime.getNextTime();
-	}
 }

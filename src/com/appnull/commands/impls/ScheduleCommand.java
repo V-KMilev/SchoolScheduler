@@ -24,6 +24,7 @@ public class ScheduleCommand extends HasAccess implements CommandHandler {
 
 		} catch (IOException | ParseException e) {
 			event.getChannel().sendMessage("Error!").queue();
+
 		}
 	}
 
