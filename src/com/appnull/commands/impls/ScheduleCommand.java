@@ -30,7 +30,7 @@ public class ScheduleCommand extends HasAccess implements CommandHandler {
 
 	@Override
 	public boolean canHandle(GuildMessageReceivedEvent event) {
-		return event.getMessage().getContentRaw().startsWith("!schedule") && hasAccess(event);
+		return hasAccess(event) && event.getMessage().getContentRaw().startsWith("!schedule") ;
 	}
 
 }

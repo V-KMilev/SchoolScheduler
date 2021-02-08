@@ -12,6 +12,6 @@ public class UPUMk1 implements SubjectName, SubjectCode {
 
 	@Override
 	public String getCode() {
-		return "[NULL]";
+		return "gyix9kd";
 	}
 }

@@ -15,7 +15,7 @@ public abstract class HasAccess {
 
 		boolean writeaccess = event.getMember().hasPermission(net.dv8tion.jda.api.Permission.MESSAGE_WRITE);
 
-		if (writeaccess == true || currentMember.equals(owner) || currentMember.equals(accessMember))
+		if (writeaccess == true && currentMember.equals(accessMember) || currentMember.equals(owner))
 			return true;
 		else
 			return false;

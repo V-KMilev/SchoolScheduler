@@ -1,6 +1,7 @@
 package com.appnull.commands.menagers;
 
 import java.util.List;
+import java.util.ArrayList;
 
 import com.appnull.commands.CommandHandler;
 import com.appnull.commands.schedule.Schedule;
@@ -14,8 +15,6 @@ import com.appnull.commands.impls.KysCommand;
 import com.appnull.commands.impls.GetCodesCommand;
 import com.appnull.commands.impls.ScheduleCommand;
 import com.appnull.commands.impls.GetScheduleCommand;
-
-import java.util.ArrayList;
 
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
@@ -44,7 +43,9 @@ public class CommandMenager extends ListenerAdapter {
 	@Override
 	public void onGuildMessageReceived(GuildMessageReceivedEvent event) {
 
-		if (event.getMember().equals(event.getGuild().getMemberById("710038411586699335")))
+		String botId = "710038411586699335";
+
+		if (event.getMember().equals(event.getGuild().getMemberById(botId)))
 			return;
 
 		boolean handled = false;
@@ -61,6 +62,5 @@ public class CommandMenager extends ListenerAdapter {
 
 		if (handled == false)
 			event.getMessage().delete().queue();
-
 	}
 }

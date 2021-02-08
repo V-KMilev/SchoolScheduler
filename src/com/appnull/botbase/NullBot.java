@@ -28,4 +28,4 @@ public class NullBot extends ListenerAdapter {
 	}
 
 }
-//Code by CN https://github.com/V-KMilev
+//Code by CN - https://github.com/V-KMilev

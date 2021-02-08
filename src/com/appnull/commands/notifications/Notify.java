@@ -26,15 +26,15 @@ public class Notify extends TimerTask {
 
 		EmbedBuilder eb = new EmbedBuilder();
 
-		eb.setTitle("Известие за час!");
-		eb.addField("Предмет: " + subject.getName(),
-				"`№ на час:` **" + subject.getPosition() + "**\n**`Код:`** ||**" + subject.getCode() + "**||", true);
+		eb.setTitle("Notification about a subject!");
+		eb.addField("Subject: " + subject.getName(),
+				"`Positon of the Subject:` **" + subject.getPosition() + "**\n**`Code:`** ||**" + subject.getCode() + "**||", true);
 
-		eb.addField("Местоположение: " + subject.getLocation(), "`Начало:` **" + subject.getStartTime()
-				+ "**\n`Край:` **" + subject.getEndTime() + "**\n`Следващ час:` **" + subject.getNextTime() + "**",
+		eb.addField("Location: " + subject.getLocation(), "`Start-Time:` **" + subject.getStartTime()
+				+ "**\n`End-Time:` **" + subject.getEndTime() + "**\n`Next subject:` **" + subject.getNextTime() + "**",
 				true);
 
-		eb.setFooter("Изпратено на " + mantion);
+		eb.setFooter("Sent to " + mantion);
 		eb.setColor(Color.RED);
 		eb.setThumbnail(imgPNG);
 
@@ -44,20 +44,20 @@ public class Notify extends TimerTask {
 
 	public void getCurrentSubject() {
 
-		String classD11 = "<@&507287205698600961>";
-		String group1 = "<@&711826223742844931>";
-		String group2 = "<@&711826277790777424>";
+		String groupD11 = "<@&507287205698600961>";
+		String groupNo1 = "<@&711826223742844931>";
+		String groupNo2 = "<@&711826277790777424>";
 
 		for (int i = 0; i < subject.getName().length(); i++) {
 
 			if (subject.getName().indexOf('1') != -1)
-				messageBase(group1);
+				messageBase(groupNo1);
 
 			else if (subject.getName().indexOf('2') != -1)
-				messageBase(group2);
+				messageBase(groupNo2);
 
 			else
-				messageBase(classD11);
+				messageBase(groupD11);
 		}
 	}
 

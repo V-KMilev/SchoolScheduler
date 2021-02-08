@@ -14,12 +14,12 @@ public class HelpssCommand implements CommandHandler {
 
 		EmbedBuilder eb = new EmbedBuilder();
 
-		eb.setTitle("CraftCN - HELP");
-		eb.addField("> **!schedule**", "**Създаване** на програмa", true);
-		eb.addField("> **!getschedule**", "**Принтиране** на програма", true);
-		eb.addField("> **!getcodes**", "Кодове", true);
+		eb.setTitle("CraftCN - Help");
+		eb.addField("> **!schedule**", "**Creating** a program", true);
+		eb.addField("> **!getschedule**", "**Printing** the program", true);
+		eb.addField("> **!getcodes**", "Codes", true);
 		eb.addField("> **!kys**", "kys?", true);
-		eb.setFooter("! For more help CurrentlyNull#3126 or vilimir.k.milev@gmail.com");
+		eb.setFooter("! For more help https://github.com/V-KMilev or vilimir.k.milev@gmail.com");
 
 		eb.setColor(Color.RED);
 		eb.setThumbnail(

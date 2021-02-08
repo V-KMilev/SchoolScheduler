@@ -12,6 +12,6 @@ public class UPKM2 implements SubjectName, SubjectCode {
 
 	@Override
 	public String getCode() {
-		return "[NULL]";
+		return "1l74fza";
 	}
 }
