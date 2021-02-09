@@ -7,7 +7,12 @@ public class MAT implements SubjectName, SubjectCode {
 
 	@Override
 	public String getName() {
-		return "Математика";
+		return "Математика (МАТ)";
+	}
+
+	@Override
+	public String getShortName() {
+		return getName().substring(getName().indexOf('(') + 1, getName().indexOf(')'));
 	}
 
 	@Override

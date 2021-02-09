@@ -11,6 +11,11 @@ public class NE implements SubjectName, SubjectCode {
 	}
 
 	@Override
+	public String getShortName() {
+		return getName().substring(getName().indexOf('(') + 1, getName().indexOf(')'));
+	}
+
+	@Override
 	public String getCode() {
 		return "r3g6lg3";
 	}

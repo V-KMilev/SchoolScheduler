@@ -7,7 +7,12 @@ public class UPKA2 implements SubjectName, SubjectCode {
 
 	@Override
 	public String getName() {
-		return "Компютърна архитектура (КА) ПРАКТИКА, гр.2";
+		return "Компютърна архитектура (УП КА-2) ПРАКТИКА, гр.2";
+	}
+
+	@Override
+	public String getShortName() {
+		return getName().substring(getName().indexOf('(') + 1, getName().indexOf(')'));
 	}
 
 	@Override

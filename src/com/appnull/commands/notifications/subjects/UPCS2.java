@@ -7,7 +7,12 @@ public class UPCS2 implements SubjectName, SubjectCode {
 
 	@Override
 	public String getName() {
-		return "Цифрова схемотехника (УП-схем.) ПРАКТИКА, гр.2";
+		return "Цифрова схемотехника (УП Схем.-2) ПРАКТИКА, гр.2";
+	}
+
+	@Override
+	public String getShortName() {
+		return getName().substring(getName().indexOf('(') + 1, getName().indexOf(')'));
 	}
 
 	@Override

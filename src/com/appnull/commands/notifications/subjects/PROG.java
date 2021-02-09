@@ -7,7 +7,12 @@ public class PROG implements SubjectName, SubjectCode {
 
 	@Override
 	public String getName() {
-		return "Програмиране";
+		return "Програмиране (Cpp)";
+	}
+
+	@Override
+	public String getShortName() {
+		return getName().substring(getName().indexOf('(') + 1, getName().indexOf(')'));
 	}
 
 	@Override

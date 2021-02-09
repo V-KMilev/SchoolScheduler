@@ -7,7 +7,12 @@ public class UPKM1 implements SubjectName, SubjectCode {
 
 	@Override
 	public String getName() {
-		return "Компютърни мрежи (УП КМ) ПРАКТИКА, гр.1";
+		return "Компютърни мрежи (УП КМ-1) ПРАКТИКА, гр.1";
+	}
+
+	@Override
+	public String getShortName() {
+		return getName().substring(getName().indexOf('(') + 1, getName().indexOf(')'));
 	}
 
 	@Override

@@ -6,6 +6,7 @@ import com.appnull.commands.CommandHandler;
 
 import com.appnull.commands.notifications.subjects.KA;
 import com.appnull.commands.notifications.subjects.CS;
+import com.appnull.commands.notifications.subjects.BK;
 import com.appnull.commands.notifications.subjects.NE;
 import com.appnull.commands.notifications.subjects.GO;
 import com.appnull.commands.notifications.subjects.SD;
@@ -60,6 +61,7 @@ public class GetCodesCommand implements CommandHandler {
 	private final UPUMk2 UPUMk2;
 
 	private final SD SD;
+	private final BK BK;
 	private final NE NE;
 	private final GO GO;
 	private final MAT MAT;
@@ -95,6 +97,7 @@ public class GetCodesCommand implements CommandHandler {
 		UPUMk2 = new UPUMk2();
 
 		SD = new SD();
+		BK = new BK();
 		NE = new NE();
 		GO = new GO();
 		BEL = new BEL();
@@ -111,32 +114,33 @@ public class GetCodesCommand implements CommandHandler {
 		EmbedBuilder eb = new EmbedBuilder();
 
 		eb.setTitle("CraftCN - Subjects codes");
-		eb.addField("> **" + KA.getName() + "**", "**Code: ||" + KA.getCode() + "||**", true);
-		eb.addField("> **" + UPKA1.getName() + "**", "**Code: ||" + UPKA1.getCode() + "||**", true);
-		eb.addField("> **" + UPKA2.getName() + "**", "**Code: ||" + UPKA2.getCode() + "||**", true);
-		eb.addField("> **" + CS.getName() + "**", "**Code: ||" + CS.getCode() + "||**", true);
-		eb.addField("> **" + UPCS1.getName() + "**", "**Code: ||" + UPCS1.getCode() + "||**", true);
-		eb.addField("> **" + UPCS2.getName() + "**", "**Code: ||" + UPCS2.getCode() + "||**", true);
-		eb.addField("> **" + ZPU.getName() + "**", "**Code: ||" + ZPU.getCode() + "||**", true);
-		eb.addField("> **" + UPZPU1.getName() + "**", "**Code: ||" + UPZPU1.getCode() + "||**", true);
-		eb.addField("> **" + UPZPU2.getName() + "**", "**Code: ||" + UPZPU2.getCode() + "||**", true);
-		eb.addField("> **" + OS.getName() + "**", "**Code: ||" + OS.getCode() + "||**", true);
-		eb.addField("> **" + UPOS1.getName() + "**", "**Code: ||" + UPOS1.getCode() + "||**", true);
-		eb.addField("> **" + UPOS2.getName() + "**", "**Code: ||" + UPOS2.getCode() + "||**", true);
-		eb.addField("> **" + KM.getName() + "**", "**Code: ||" + KM.getCode() + "||**", true);
-		eb.addField("> **" + UPKM1.getName() + "**", "**Code: ||" + UPKM1.getCode() + "||**", true);
-		eb.addField("> **" + UPKM2.getName() + "**", "**Code: ||" + UPKM2.getCode() + "||**", true);
-		eb.addField("> **" + UPUMk1.getName() + "**", "**Code: ||" + UPUMk1.getCode() + "||**", true);
-		eb.addField("> **" + UPUMk2.getName() + "**", "**Code: ||" + UPUMk2.getCode() + "||**", true);
-		eb.addField("> **" + PROG.getName() + "**", "**Code: ||" + PROG.getCode() + "||**", true);
-		eb.addField("> **" + GO.getName() + "**", "**Code: ||" + GO.getCode() + "||**", true);
-		eb.addField("> **" + NE.getName() + "**", "**Code: ||" + NE.getCode() + "||**", true);
-		eb.addField("> **" + MAT.getName() + "**", "**Code: ||" + MAT.getCode() + "||**", true);
-		eb.addField("> **" + BEL.getName() + "**", "**Code: ||" + BEL.getCode() + "||**", true);
-		eb.addField("> **" + ChEP.getName() + "**", "**Code: ||" + ChEP.getCode() + "||**", true);
-		eb.addField("> **" + ChKR.getName() + "**", "**Code: ||" + ChKR.getCode() + "||**", true);
-		eb.addField("> **" + SD.getName() + "**", "**Code: ||" + SD.getCode() + "||**", true);
-		eb.addField("> **" + FVS.getName() + "**", "**Code: ||" + FVS.getCode() + "||**", true);
+		eb.addField("> **" + KA.getShortName() + "**", "**Code: ||" + KA.getCode() + "||**", true);
+		eb.addField("> **" + UPKA1.getShortName() + "**", "**Code: ||" + UPKA1.getCode() + "||**", true);
+		eb.addField("> **" + UPKA2.getShortName() + "**", "**Code: ||" + UPKA2.getCode() + "||**", true);
+		eb.addField("> **" + CS.getShortName() + "**", "**Code: ||" + CS.getCode() + "||**", true);
+		eb.addField("> **" + UPCS1.getShortName() + "**", "**Code: ||" + UPCS1.getCode() + "||**", true);
+		eb.addField("> **" + UPCS2.getShortName() + "**", "**Code: ||" + UPCS2.getCode() + "||**", true);
+		eb.addField("> **" + ZPU.getShortName() + "**", "**Code: ||" + ZPU.getCode() + "||**", true);
+		eb.addField("> **" + UPZPU1.getShortName() + "**", "**Code: ||" + UPZPU1.getCode() + "||**", true);
+		eb.addField("> **" + UPZPU2.getShortName() + "**", "**Code: ||" + UPZPU2.getCode() + "||**", true);
+		eb.addField("> **" + OS.getShortName() + "**", "**Code: ||" + OS.getCode() + "||**", true);
+		eb.addField("> **" + UPOS1.getShortName() + "**", "**Code: ||" + UPOS1.getCode() + "||**", true);
+		eb.addField("> **" + UPOS2.getShortName() + "**", "**Code: ||" + UPOS2.getCode() + "||**", true);
+		eb.addField("> **" + KM.getShortName() + "**", "**Code: ||" + KM.getCode() + "||**", true);
+		eb.addField("> **" + UPKM1.getShortName() + "**", "**Code: ||" + UPKM1.getCode() + "||**", true);
+		eb.addField("> **" + UPKM2.getShortName() + "**", "**Code: ||" + UPKM2.getCode() + "||**", true);
+		eb.addField("> **" + UPUMk1.getShortName() + "**", "**Code: ||" + UPUMk1.getCode() + "||**", true);
+		eb.addField("> **" + UPUMk2.getShortName() + "**", "**Code: ||" + UPUMk2.getCode() + "||**", true);
+		eb.addField("> **" + PROG.getShortName() + "**", "**Code: ||" + PROG.getCode() + "||**", true);
+		eb.addField("> **" + GO.getShortName() + "**", "**Code: ||" + GO.getCode() + "||**", true);
+		eb.addField("> **" + BK.getShortName() + "**", "**Code: ||" + BK.getCode() + "||**", true);
+		eb.addField("> **" + NE.getShortName() + "**", "**Code: ||" + NE.getCode() + "||**", true);
+		eb.addField("> **" + SD.getShortName() + "**", "**Code: ||" + SD.getCode() + "||**", true);
+		eb.addField("> **" + BEL.getShortName() + "**", "**Code: ||" + BEL.getCode() + "||**", true);
+		eb.addField("> **" + MAT.getShortName() + "**", "**Code: ||" + MAT.getCode() + "||**", true);
+		eb.addField("> **" + FVS.getShortName() + "**", "**Code: ||" + FVS.getCode() + "||**", true);
+		eb.addField("> **" + ChEP.getShortName() + "**", "**Code: ||" + ChEP.getCode() + "||**", true);
+		eb.addField("> **" + ChKR.getShortName() + "**", "**Code: ||" + ChKR.getCode() + "||**", true);
 
 		eb.setFooter("! For more help https://github.com/V-KMilev or vilimir.k.milev@gmail.com");
 

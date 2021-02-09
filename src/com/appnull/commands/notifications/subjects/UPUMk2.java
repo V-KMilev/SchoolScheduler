@@ -7,7 +7,12 @@ public class UPUMk2 implements SubjectName, SubjectCode {
 
 	@Override
 	public String getName() {
-		return "Управление на микроконтролер (УП УМк) ПРАКТИКА, гр.2";
+		return "Управление на микроконтролер (УП УМк-2) ПРАКТИКА, гр.2";
+	}
+
+	@Override
+	public String getShortName() {
+		return getName().substring(getName().indexOf('(') + 1, getName().indexOf(')'));
 	}
 
 	@Override

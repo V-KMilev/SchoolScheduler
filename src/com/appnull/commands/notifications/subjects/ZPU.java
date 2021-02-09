@@ -11,6 +11,11 @@ public class ZPU implements SubjectName, SubjectCode {
 	}
 
 	@Override
+	public String getShortName() {
+		return getName().substring(getName().indexOf('(') + 1, getName().indexOf(')'));
+	}
+
+	@Override
 	public String getCode() {
 		return "3m9tmd5";
 	}

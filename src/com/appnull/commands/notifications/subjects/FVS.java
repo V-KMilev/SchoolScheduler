@@ -11,6 +11,11 @@ public class FVS implements SubjectName, SubjectCode {
 	}
 
 	@Override
+	public String getShortName() {
+		return getName().substring(getName().indexOf('(') + 1, getName().indexOf(')'));
+	}
+
+	@Override
 	public String getCode() {
 		return "mcsehdp";
 	}

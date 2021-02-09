@@ -7,6 +7,7 @@ public class SubjectImpl implements Subject {
 	private SubjectStartTime subjectStartTime;
 	private SubjectLocation subjectLocation;
 	private SubjectName subjectName;
+	private SubjectName subjectShortName;
 
 	private SubjectEndTime subjectEndTime;
 	private SubjectNextTime subjectNextTime;
@@ -16,6 +17,7 @@ public class SubjectImpl implements Subject {
 	public SubjectImpl(SubjectStartTime startTime, SubjectLocation location, SubjectName name) {
 
 		this.subjectName = name;
+		this.subjectShortName = name;
 		this.subjectLocation = location;
 		this.subjectStartTime = startTime;
 
@@ -38,6 +40,11 @@ public class SubjectImpl implements Subject {
 	@Override
 	public String getName() {
 		return subjectName.getName();
+	}
+	
+	@Override
+	public String getShortName() {
+		return subjectShortName.getShortName();
 	}
 
 	@Override

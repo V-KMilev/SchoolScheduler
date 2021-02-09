@@ -7,7 +7,12 @@ public class UPOS2 implements SubjectName, SubjectCode {
 
 	@Override
 	public String getName() {
-		return "Операционни системи (ОС) ПРАКТИКА, гр.2";
+		return "Операционни системи (УП ОС-2) ПРАКТИКА, гр.2";
+	}
+
+	@Override
+	public String getShortName() {
+		return getName().substring(getName().indexOf('(') + 1, getName().indexOf(')'));
 	}
 
 	@Override

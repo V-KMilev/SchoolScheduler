@@ -6,15 +6,15 @@ import java.util.ArrayList;
 import com.appnull.commands.CommandHandler;
 import com.appnull.commands.schedule.Schedule;
 
-import com.appnull.commands.impls.AddRoleCommand;
-import com.appnull.commands.impls.RemoveRoleCommand;
-import com.appnull.commands.impls.AutoAddRoleCommand;
-import com.appnull.commands.impls.AutoRemoveRoleCommand;
-import com.appnull.commands.impls.HelpssCommand;
 import com.appnull.commands.impls.KysCommand;
+import com.appnull.commands.impls.HelpssCommand;
+import com.appnull.commands.impls.AddRoleCommand;
 import com.appnull.commands.impls.GetCodesCommand;
 import com.appnull.commands.impls.ScheduleCommand;
+import com.appnull.commands.impls.RemoveRoleCommand;
 import com.appnull.commands.impls.GetScheduleCommand;
+import com.appnull.commands.impls.AutoAddRoleCommand;
+import com.appnull.commands.impls.AutoRemoveRoleCommand;
 
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
@@ -37,18 +37,17 @@ public class CommandMenager extends ListenerAdapter {
 		handlers.add(new GetScheduleCommand(schedule));
 		handlers.add(new HelpssCommand());
 		handlers.add(new GetCodesCommand());
-
 	}
-
+s
 	@Override
 	public void onGuildMessageReceived(GuildMessageReceivedEvent event) {
 
-		String botId = "710038411586699335";
+		String botId = event.getJDA().getSelfUser().getId();
+
+		boolean handled = false;
 
 		if (event.getMember().equals(event.getGuild().getMemberById(botId)))
 			return;
-
-		boolean handled = false;
 
 		for (CommandHandler handler : handlers) {
 

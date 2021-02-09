@@ -15,10 +15,9 @@ public class HelpssCommand implements CommandHandler {
 		EmbedBuilder eb = new EmbedBuilder();
 
 		eb.setTitle("CraftCN - Help");
-		eb.addField("> **!schedule**", "**Creating** a program", true);
-		eb.addField("> **!getschedule**", "**Printing** the program", true);
-		eb.addField("> **!getcodes**", "Codes", true);
-		eb.addField("> **!kys**", "kys?", true);
+		eb.addField("> **!schedule**", "**Create** a program", true);
+		eb.addField("> **!getschedule**", "**Print** the program", true);
+		eb.addField("> **!getcodes**", "**Print** the codes", true);
 		eb.setFooter("! For more help https://github.com/V-KMilev or vilimir.k.milev@gmail.com");
 
 		eb.setColor(Color.RED);

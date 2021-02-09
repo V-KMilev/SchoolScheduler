@@ -21,8 +21,7 @@ public class NullBot extends ListenerAdapter {
 			jda.addEventListener(new CommandMenager());
 
 		} catch (Exception e) {
-			System.out.println("Error!");
-
+			System.out.println("Connection Error - CommandMenager!");
 		}
 
 	}

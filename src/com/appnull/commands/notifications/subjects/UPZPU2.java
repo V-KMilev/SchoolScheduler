@@ -7,7 +7,12 @@ public class UPZPU2 implements SubjectName, SubjectCode {
 
 	@Override
 	public String getName() {
-		return "Запаметяващи и периферни устройства (ЗПУ) ПРАКТИКА, гр.2";
+		return "Запаметяващи и периферни устройства (УП ЗПУ-2) ПРАКТИКА, гр.2";
+	}
+
+	@Override
+	public String getShortName() {
+		return getName().substring(getName().indexOf('(') + 1, getName().indexOf(')'));
 	}
 
 	@Override
