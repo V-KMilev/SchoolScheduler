@@ -5,8 +5,6 @@ import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 
 public abstract class HasAccess {
 
-	GuildMessageReceivedEvent event;
-
 	protected boolean hasAccess(GuildMessageReceivedEvent event) {
 
 		final Member owner = event.getGuild().getMemberById("266695705786056704");
@@ -15,9 +13,6 @@ public abstract class HasAccess {
 		Member currentMember = event.getMember();
 		boolean writeaccess = currentMember.hasPermission(net.dv8tion.jda.api.Permission.MESSAGE_WRITE);
 
-		if (writeaccess == true && currentMember.equals(accessMember) || currentMember.equals(owner))
-			return true;
-		else
-			return false;
+		return writeaccess == true && currentMember.equals(accessMember) || currentMember.equals(owner);
 	}
 }

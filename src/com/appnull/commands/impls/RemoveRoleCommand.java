@@ -8,7 +8,7 @@ public class RemoveRoleCommand extends RoleCommand implements CommandHandler {
 
 	@Override
 	public void handle(GuildMessageReceivedEvent event, String userId) {
-		roleMannager.handed(event, userId, role, false);
+		roleManager.roleSetter(event, userId, role, true, false);
 	}
 
 	@Override

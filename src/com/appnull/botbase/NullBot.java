@@ -1,6 +1,6 @@
 package com.appnull.botbase;
 
-import com.appnull.commands.menagers.CommandMenager;
+import com.appnull.commands.menagers.CommandManager;
 
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
@@ -18,10 +18,10 @@ public class NullBot extends ListenerAdapter {
 		jda.getPresence().setStatus(OnlineStatus.ONLINE);
 
 		try {
-			jda.addEventListener(new CommandMenager());
+			jda.addEventListener(new CommandManager());
 
 		} catch (Exception e) {
-			System.out.println("Connection Error - CommandMenager!");
+			System.out.println("Connection Error - CommandManager!");
 		}
 
 	}

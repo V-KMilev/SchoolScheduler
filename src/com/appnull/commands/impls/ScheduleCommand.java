@@ -3,14 +3,14 @@ package com.appnull.commands.impls;
 import java.io.IOException;
 import java.text.ParseException;
 
+import com.appnull.schedule.Schedule;
 import com.appnull.commands.CommandHandler;
-import com.appnull.commands.schedule.Schedule;
 
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 
 public class ScheduleCommand extends HasAccess implements CommandHandler {
 
-	Schedule schedule;
+	private Schedule schedule;
 
 	public ScheduleCommand(Schedule schedule) {
 		this.schedule = schedule;
@@ -30,7 +30,7 @@ public class ScheduleCommand extends HasAccess implements CommandHandler {
 
 	@Override
 	public boolean canHandle(GuildMessageReceivedEvent event) {
-		return hasAccess(event) && event.getMessage().getContentRaw().startsWith("!schedule") ;
+		return hasAccess(event) && event.getMessage().getContentRaw().startsWith("!schedule");
 	}
 
 }

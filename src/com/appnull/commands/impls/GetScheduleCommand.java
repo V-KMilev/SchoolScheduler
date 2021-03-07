@@ -1,13 +1,13 @@
 package com.appnull.commands.impls;
 
 import com.appnull.commands.CommandHandler;
-import com.appnull.commands.schedule.Schedule;
+import com.appnull.schedule.Schedule;
 
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 
 public class GetScheduleCommand extends HasAccess implements CommandHandler {
 
-	Schedule schedule;
+	private final Schedule schedule;
 
 	public GetScheduleCommand(Schedule schedule) {
 		this.schedule = schedule;

@@ -22,7 +22,7 @@ public class HelpssCommand implements CommandHandler {
 
 		eb.setColor(Color.RED);
 		eb.setThumbnail(
-				"https://cdn.discordapp.com/attachments/710039794884935743/785396990242455613/haah_-_Copy_-_Copy_-_Copy.png");
+				"https://cdn.discordapp.com/attachments/528269500269723658/809022585114722304/received_673238400293642.jpeg");
 
 		event.getChannel().sendMessage(eb.build()).queue();
 	}

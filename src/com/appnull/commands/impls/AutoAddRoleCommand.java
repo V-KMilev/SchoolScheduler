@@ -8,7 +8,7 @@ public class AutoAddRoleCommand extends RoleCommand implements CommandHandler {
 
 	@Override
 	public void handle(GuildMessageReceivedEvent event, String userId) {
-		roleMannager.automatical(event, userId, role, true);
+		roleManager.roleSetter(event, userId, role, false, true);
 	}
 
 	@Override

@@ -8,7 +8,7 @@ public class AutoRemoveRoleCommand extends RoleCommand implements CommandHandler
 
 	@Override
 	public void handle(GuildMessageReceivedEvent event, String userId) {
-		roleMannager.automatical(event, userId, role, false);
+		roleManager.roleSetter(event, userId, role, false, false);
 	}
 
 	@Override

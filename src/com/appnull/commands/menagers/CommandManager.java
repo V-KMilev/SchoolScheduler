@@ -3,9 +3,9 @@ package com.appnull.commands.menagers;
 import java.util.List;
 import java.util.ArrayList;
 
-import com.appnull.commands.CommandHandler;
-import com.appnull.commands.schedule.Schedule;
+import com.appnull.schedule.Schedule;
 
+import com.appnull.commands.CommandHandler;
 import com.appnull.commands.impls.KysCommand;
 import com.appnull.commands.impls.HelpssCommand;
 import com.appnull.commands.impls.AddRoleCommand;
@@ -19,11 +19,13 @@ import com.appnull.commands.impls.AutoRemoveRoleCommand;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 
-public class CommandMenager extends ListenerAdapter {
+public class CommandManager extends ListenerAdapter {
 
-	List<CommandHandler> handlers = new ArrayList<>();
+	protected List<CommandHandler> handlers = new ArrayList<>();
 
-	public CommandMenager() {
+	private static String accessId = "266695705786056704";
+
+	public CommandManager() {
 
 		final Schedule schedule = new Schedule();
 
@@ -38,28 +40,28 @@ public class CommandMenager extends ListenerAdapter {
 		handlers.add(new HelpssCommand());
 		handlers.add(new GetCodesCommand());
 	}
-s
+
 	@Override
 	public void onGuildMessageReceived(GuildMessageReceivedEvent event) {
 
 		String botId = event.getJDA().getSelfUser().getId();
 
-		boolean handled = false;
-
 		if (event.getMember().equals(event.getGuild().getMemberById(botId)))
 			return;
+
+		boolean handled = false;
 
 		for (CommandHandler handler : handlers) {
 
 			if (handler.canHandle(event)) {
 
-				handler.handle(event, "266695705786056704");
+				handler.handle(event, accessId);
 				handled = true;
 				break;
 			}
 		}
 
-		if (handled == false)
+		if (!handled)
 			event.getMessage().delete().queue();
 	}
 }
