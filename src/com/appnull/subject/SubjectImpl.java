@@ -8,14 +8,13 @@ public class SubjectImpl implements Subject {
 	private LocalTime endTime;
 
 	private String name;
-	private String shortName;
 	private String code;
 	private String location;
 
 	private int position;
 
 	public SubjectImpl(String location, LocalTime startTime, LocalTime endTime, int position, String name,
-			String shortName, String code) {
+			String code) {
 
 		this.startTime = startTime;
 		this.endTime = endTime;
@@ -23,7 +22,6 @@ public class SubjectImpl implements Subject {
 		this.location = location;
 		this.position = position;
 		this.name = name;
-		this.shortName = shortName;
 		this.code = code;
 
 	}
@@ -41,11 +39,6 @@ public class SubjectImpl implements Subject {
 	@Override
 	public String getName() {
 		return name;
-	}
-
-	@Override
-	public String getShortName() {
-		return shortName;
 	}
 
 	@Override

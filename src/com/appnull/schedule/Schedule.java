@@ -72,7 +72,7 @@ public class Schedule {
 					LocalTime.parse(prop.getProperty("firstSubject.startTime")),
 					LocalTime.parse(prop.getProperty("firstSubject.endTime")),
 					Integer.parseInt(prop.getProperty("firstSubject.position")), prop.getProperty("BEL.name"),
-					prop.getProperty("BEL.shortName"), prop.getProperty("BEL.code")));
+					prop.getProperty("BEL.code")));
 
 			schoolSchedule.put(3, tuesday);
 
@@ -133,10 +133,9 @@ public class Schedule {
 							+ " | Subject: " + subject.getName() + " | " + subject.getCode() + " - "
 							+ subject.getLocation() + " [" + subject.getPosition() + "]";
 
-					String logMessageJDA = "**CraftCN** ||" + accessToken + "-accessToken|| "
-							+ "**Scheduled task for:** `" + scheduledTime + "` **Subject:** `" + subject.getName()
-							+ "` **# " + subject.getPosition() + " | `" + subject.getLocation() + "` ||"
-							+ subject.getCode() + "||**";
+					String logMessageJDA = "**CraftCN** ||" + accessToken + "-accessToken|| " + "**Task Time:** `"
+							+ scheduledTime + "` **Subject:** `" + subject.getName() + "`** | `" + subject.getLocation()
+							+ "` - ||" + subject.getCode() + "|| [" + subject.getPosition() + "]**";
 
 					this.getScheduledTasksLog().add(logMessageJDA);
 
@@ -147,5 +146,4 @@ public class Schedule {
 			}
 		}
 	}
-
 }

@@ -10,8 +10,6 @@ public interface Subject {
 
 	public String getName();
 
-	public String getShortName();
-
 	public String getCode();
 
 	public String getLocation();
