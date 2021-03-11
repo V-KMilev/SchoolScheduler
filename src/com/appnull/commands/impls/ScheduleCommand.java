@@ -23,7 +23,7 @@ public class ScheduleCommand extends HasAccess implements CommandHandler {
 			schedule.scheduleTasks(event);
 
 		} catch (IOException | ParseException e) {
-			event.getChannel().sendMessage("Error!").queue();
+			event.getChannel().sendMessage("[CraftCN schedule-command] Error: " + e).queue();
 
 		}
 	}

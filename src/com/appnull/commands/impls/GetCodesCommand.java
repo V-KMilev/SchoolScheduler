@@ -12,7 +12,7 @@ import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 
 public class GetCodesCommand implements CommandHandler {
 
-	private static String fild = "https://cdn.discordapp.com/attachments/718871472336273429/806569636169515052/11.png";
+	private final static String img = "https://cdn.discordapp.com/attachments/718871472336273429/806569636169515052/11.png";
 
 	private final Properties prop = new Properties();
 	private final String propFileTime = "time.properties";
@@ -28,10 +28,11 @@ public class GetCodesCommand implements CommandHandler {
 
 			inputStream = getClass().getClassLoader().getResourceAsStream(propFileTime);
 
-			if (inputStream != null) {
+			if (inputStream != null)
 				prop.load(inputStream);
-			} else
-				throw new FileNotFoundException("property file '" + inputStream + "' not found in the classpath!");
+			else
+				throw new FileNotFoundException(
+						"[CraftCN get-codes] Property file '" + inputStream + "' not found in the classpath!");
 
 			eb.setTitle("CraftCN - Subjects codes");
 			eb.addField("> **" + prop.getProperty("KA.shortName") + "**",
@@ -116,13 +117,13 @@ public class GetCodesCommand implements CommandHandler {
 					"**Code: ||" + prop.getProperty("ChKR.code") + "||**", true);
 
 		} catch (Exception e) {
-			System.out.println("Exception: " + e);
+			System.out.println("[CraftCN get-codes] Exception: " + e);
 		}
 
 		eb.setFooter("! For more help https://github.com/V-KMilev or vilimir.k.milev@gmail.com");
 
 		eb.setColor(Color.RED);
-		eb.setThumbnail(fild);
+		eb.setThumbnail(img);
 
 		event.getChannel().sendMessage(eb.build()).queue();
 	}

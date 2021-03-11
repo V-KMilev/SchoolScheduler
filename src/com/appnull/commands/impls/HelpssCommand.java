@@ -9,6 +9,8 @@ import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 
 public class HelpssCommand implements CommandHandler {
 
+	private final static String img = "https://cdn.discordapp.com/attachments/528269500269723658/809022585114722304/received_673238400293642.jpeg";
+
 	@Override
 	public void handle(GuildMessageReceivedEvent event, String userId) {
 
@@ -21,8 +23,7 @@ public class HelpssCommand implements CommandHandler {
 		eb.setFooter("! For more help https://github.com/V-KMilev or vilimir.k.milev@gmail.com");
 
 		eb.setColor(Color.RED);
-		eb.setThumbnail(
-				"https://cdn.discordapp.com/attachments/528269500269723658/809022585114722304/received_673238400293642.jpeg");
+		eb.setThumbnail(img);
 
 		event.getChannel().sendMessage(eb.build()).queue();
 	}

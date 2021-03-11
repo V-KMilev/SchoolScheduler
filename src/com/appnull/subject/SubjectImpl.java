@@ -19,10 +19,11 @@ public class SubjectImpl implements Subject {
 		this.startTime = startTime;
 		this.endTime = endTime;
 
-		this.location = location;
 		this.position = position;
 		this.name = name;
 		this.code = code;
+
+		this.location = location;
 
 	}
 
@@ -47,12 +48,12 @@ public class SubjectImpl implements Subject {
 	}
 
 	@Override
-	public int getPosition() {
-		return position;
+	public String getLocation() {
+		return location;
 	}
 
 	@Override
-	public String getLocation() {
-		return location;
+	public int getPosition() {
+		return position;
 	}
 }

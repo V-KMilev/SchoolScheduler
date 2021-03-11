@@ -1,4 +1,4 @@
-package com.appnull.commands.menagers;
+package com.appnull.commands.managers;
 
 import java.util.List;
 
@@ -37,11 +37,11 @@ public class RoleManager {
 				if (isAddition) {
 
 					guild.addRoleToMember(currentMember, role).queue();
-					System.out.println("Added: " + currentMember);
+					System.out.println("CraftCN Added: " + currentMember);
 				} else {
 
 					guild.removeRoleFromMember(currentMember, role).queue();
-					System.out.println("Removed: " + currentMember);
+					System.out.println("CraftCN Removed: " + currentMember);
 				}
 			}
 		}

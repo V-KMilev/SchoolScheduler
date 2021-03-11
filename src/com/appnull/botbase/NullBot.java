@@ -1,8 +1,6 @@
 package com.appnull.botbase;
 
-import java.util.Locale;
-
-import com.appnull.commands.menagers.CommandManager;
+import com.appnull.commands.managers.CommandManager;
 
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
@@ -25,7 +23,7 @@ public class NullBot extends ListenerAdapter {
 			jda.addEventListener(new CommandManager());
 
 		} catch (Exception e) {
-			System.out.println("Connection Error - CommandManager!");
+			System.out.println("[CraftCN main] Connection Error - CommandManager!");
 		}
 
 	}

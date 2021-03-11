@@ -1,4 +1,4 @@
-package com.appnull.commands.menagers;
+package com.appnull.commands.managers;
 
 import java.util.List;
 import java.util.ArrayList;

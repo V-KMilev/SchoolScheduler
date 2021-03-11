@@ -1,6 +1,6 @@
 package com.appnull.commands.impls;
 
-import com.appnull.commands.menagers.RoleManager;
+import com.appnull.commands.managers.RoleManager;
 
 public abstract class RoleCommand {
 

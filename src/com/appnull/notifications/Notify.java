@@ -11,6 +11,8 @@ import com.appnull.subject.Subject;
 
 public class Notify extends TimerTask {
 
+	private final static String img = "https://cdn.discordapp.com/attachments/718871472336273429/806569636169515052/11.png";
+
 	private GuildMessageReceivedEvent event;
 	private Subject subject;
 
@@ -21,8 +23,6 @@ public class Notify extends TimerTask {
 	}
 
 	private void messageBase(String mantion) {
-
-		String imgPNG = "https://cdn.discordapp.com/attachments/718871472336273429/806569636169515052/11.png";
 
 		EmbedBuilder eb = new EmbedBuilder();
 
@@ -35,7 +35,7 @@ public class Notify extends TimerTask {
 
 		eb.setFooter("Sent to " + mantion);
 		eb.setColor(Color.RED);
-		eb.setThumbnail(imgPNG);
+		eb.setThumbnail(img);
 
 		event.getChannel().sendMessage(mantion).queue();
 		event.getChannel().sendMessage(eb.build()).queue();
