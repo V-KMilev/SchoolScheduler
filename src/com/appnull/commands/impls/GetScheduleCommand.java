@@ -18,7 +18,8 @@ public class GetScheduleCommand extends HasAccess implements CommandHandler {
 
 		event.getChannel()
 				.sendMessage("**CraftCN | " + "Server: `" + event.getGuild().getName() + "` End-Date: `"
-						+ schedule.getEndDate() + "`** **Scheduler: " + event.getMember().getAsMention() + "**")
+						+ schedule.getEndDate() + "`** **Scheduler: " + event.getMember().getAsMention() + " | `"
+						+ schedule.getScheduleStartTime() + "`**")
 				.queue();
 
 		for (String task : schedule.getScheduledTasksLog())

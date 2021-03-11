@@ -2,6 +2,8 @@ package com.appnull.schedule;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 
 import java.util.Map;
@@ -62,12 +64,12 @@ public class Schedule {
 		try {
 
 			inputStream = getClass().getClassLoader().getResourceAsStream(propFileTime);
+			BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream, "utf-8"));
 
 			if (inputStream != null)
-				prop.load(inputStream);
+				prop.load(reader);
 			else
-				throw new FileNotFoundException(
-						"Property file '" + inputStream + "' not found in the classpath!");
+				throw new FileNotFoundException("Property file '" + inputStream + "' not found in the classpath!");
 
 			schoolSchedule.put(2, mondays);
 
@@ -337,14 +339,20 @@ public class Schedule {
 		return scheduledTasksLog;
 	}
 
+	public String getScheduleStartTime() {
+
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm:ss");
+
+		return LocalTime.now().format(dtf);
+	}
+
 	public void scheduleTasks(GuildMessageReceivedEvent event) throws ParseException, IOException {
 
 		SimpleDateFormat dateFormater = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm:ss");
 		LocalDate startDate = LocalDate.now();
 
 		System.out.println("CraftCN " + "Server: " + event.getGuild() + " End-Date: " + getEndDate() + " Scheduler: "
-				+ event.getMember().getUser() + " | " + LocalTime.now().format(dtf));
+				+ event.getMember().getUser() + " | " + getScheduleStartTime());
 
 		for (LocalDate date = startDate; date.isBefore(getEndDate()); date = date.plusDays(1)) {
 
@@ -368,7 +376,7 @@ public class Schedule {
 					String dateString = date.toString() + " " + hoursAndMin;
 					Date scheduledTime = dateFormater.parse(dateString);
 
-					timer.schedule(new Notify(event, subject), scheduledTime);
+					timer.schedule(new Notify(event, subject, getScheduleStartTime()), scheduledTime);
 
 					this.getScheduledTasksLog().add(logMessage(subject, scheduledTime, false));
 

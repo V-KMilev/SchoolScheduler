@@ -1,4 +1,4 @@
-package com.appnull.botbase;
+package com.appnull.botmain;
 
 import com.appnull.commands.managers.CommandManager;
 
