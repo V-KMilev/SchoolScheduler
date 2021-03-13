@@ -38,7 +38,7 @@ public class Notify extends TimerTask {
 
 		EmbedBuilder eb = new EmbedBuilder();
 
-		eb.setTitle("Notification about a subject!");
+		eb.setTitle("Notification:");
 
 		eb.addField("Subject: " + subject.getName(), "`Positon of the Subject:` **" + subject.getPosition()
 				+ "**\n**`Code:`** ||**" + subject.getCode() + "**||", true);
