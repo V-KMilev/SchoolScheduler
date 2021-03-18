@@ -1,9 +1,9 @@
 package com.appnull.schedule;
 
-import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.io.IOException;
 import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.io.FileNotFoundException;
 
 import java.util.Map;
@@ -21,11 +21,11 @@ import java.time.format.DateTimeFormatter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
-import org.apache.commons.collections4.map.HashedMap;
-
 import com.appnull.subject.Subject;
 import com.appnull.subject.SubjectImpl;
 import com.appnull.notifications.Notify;
+
+import org.apache.commons.collections4.map.HashedMap;
 
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 

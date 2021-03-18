@@ -12,7 +12,7 @@ import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 
 public class GetCodesCommand implements CommandHandler {
 
-	private final static String img = "https://cdn.discordapp.com/attachments/718871472336273429/806569636169515052/11.png";
+	private final static String img = "https://cdn.discordapp.com/attachments/710039794884935743/820371562019815474/unknown.png";
 
 	private final Properties prop = new Properties();
 	private final String propFileTime = "time.properties";
