@@ -11,7 +11,7 @@ import com.appnull.subject.Subject;
 
 public class Notify extends TimerTask {
 
-	private final static String img = "https://cdn.discordapp.com/attachments/718871472336273429/806569636169515052/11.png";
+	private final static String img = "https://cdn.discordapp.com/attachments/710039794884935743/820371562019815474/unknown.png";
 	private final String startTime;
 
 	private GuildMessageReceivedEvent event;
@@ -38,7 +38,7 @@ public class Notify extends TimerTask {
 
 		EmbedBuilder eb = new EmbedBuilder();
 
-		eb.setTitle("Notification about a subject!");
+		eb.setTitle("Notification");
 
 		eb.addField("Subject: " + subject.getName(), "`Positon of the Subject:` **" + subject.getPosition()
 				+ "**\n**`Code:`** ||**" + subject.getCode() + "**||", true);
